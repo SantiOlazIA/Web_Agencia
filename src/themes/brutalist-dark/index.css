@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", "system-ui", sans-serif;
+  --font-serif: "Outfit", "system-ui", sans-serif; /* brutalist: no serif, all sans */
+
+  /* Brutalist Dark Palette — Profile B (industrial, construcción, tecnología) */
+  --color-primary: #FAFAFA;     /* Near-white — text */
+  --color-secondary: #09090B;   /* Near-black — background */
+  --color-accent: #2563EB;      /* Electric blue — CTA, highlights */
+  --color-muted: #71717A;       /* Dark grey — secondary text */
+
+  --spacing-safe-nav: 6rem;
+}
+
+html,
+body,
+#root {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Base Form Resets for OrderForm.tsx */
+input,
+textarea {
+  outline: none;
+}

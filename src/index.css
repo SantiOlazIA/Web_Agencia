@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", "system-ui", sans-serif;
+  --font-serif: "Playfair Display", "Georgia", serif;
+
+  /* Luxury Tech — Deep graphite backgrounds, platinum accents, white text */
+  --color-primary: #FFFFFF;   /* pristine white — text */
+  --color-secondary: #050505; /* Deep graphite — background */
+  --color-surface: #121212;   /* Slightly lighter dark for cards */
+  --color-accent: #B0B0B0;    /* Sleek platinum/silver — CTA, highlights */
+  --color-muted: #888888;     /* Muted grey — secondary text */
+
+  --spacing-safe-nav: 6rem;
+}
+
+html,
+body,
+#root {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Base Form Resets for OrderForm.tsx */
+input,
+textarea {
+  outline: none;
+}

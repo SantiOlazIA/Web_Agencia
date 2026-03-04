@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", "system-ui", sans-serif;
+  --font-serif: "Playfair Display", "Georgia", serif;
+
+  /* Minimalist Light — warm cream + near-black, rust accent */
+  /* Profile B Boutique: estudios creativos, diseño, consultoras */
+  --color-primary: #111110;   /* Near-black — text */
+  --color-secondary: #F8F7F4; /* Warm cream — background */
+  --color-accent: #D4622A;    /* Warm rust — CTA, highlights */
+  --color-muted: #8A8580;     /* Stone grey — secondary text */
+
+  --spacing-safe-nav: 6rem;
+}
+
+html,
+body,
+#root {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Base Form Resets for OrderForm.tsx */
+input,
+textarea {
+  outline: none;
+}

@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", "system-ui", sans-serif;
+  --font-serif: "Playfair Display", "Georgia", serif;
+
+  /* Organic Warm Palette — Profile A (food, artesanal, panadería, emprendimiento) */
+  --color-primary: #1A1A1A;     /* Deep charcoal — text, borders */
+  --color-secondary: #F8F5F2;   /* Warm off-white — background */
+  --color-accent: #D97743;      /* Terracotta / Artisan Orange */
+  --color-muted: #8A8580;       /* Soft stone grey — secondary text */
+
+  --spacing-safe-nav: 6rem;
+}
+
+html,
+body,
+#root {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Base Form Resets for OrderForm.tsx */
+input,
+textarea {
+  outline: none;
+}

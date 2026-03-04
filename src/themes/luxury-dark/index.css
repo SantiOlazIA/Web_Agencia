@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", "system-ui", sans-serif;
+  --font-serif: "Playfair Display", "Cormorant Garamond", "Georgia", serif;
+
+  /* Luxury Dark Palette — Profile B Premium (clínicas, legales, alto valor) */
+  --color-primary: #FDFBFC;     /* Off-white — text */
+  --color-secondary: #181614;   /* Deep warm grey/brown — background */
+  --color-accent: #C5A059;      /* Warm gold — CTA, highlights */
+  --color-muted: #8A7F75;       /* Muted warm grey — secondary text */
+
+  --spacing-safe-nav: 6rem;
+}
+
+html,
+body,
+#root {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Base Form Resets for OrderForm.tsx */
+input,
+textarea {
+  outline: none;
+}
