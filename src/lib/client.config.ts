@@ -1,15 +1,15 @@
 // ============================================================
-// AGENCY CONFIG — Studio Olaz
-// Cambiar brandName, tagline, whatsappPhone antes del deploy
+// AGENCY CONFIG — Aurea
+// Diseño y Desarrollo Web
 // ============================================================
 
 export const CLIENT = {
-    brandName: "Studio Olaz",
-    tagline: "Sitios web que venden.",
-    heroTagline: "Para negocios argentinos · Online en 5 días",
+    brandName: "Aurea",
+    tagline: "Diseño y Desarrollo Web.",
+    heroTagline: "Diseño Premium · Presencia Digital",
 
     whatsappPhone: "5492646274616",
-    email: "hola@studioolaz.com",
+    email: "hola@aureadiseno.com",
 
     navLinks: [
         { href: "#cases", label: "Casos" },
@@ -21,16 +21,16 @@ export const CLIENT = {
     cases: [
         {
             id: "el-gourmet",
-            name: "El Gourmet Panadería",
+            name: "El Gourmet Panaderia",
             category: "Food & Artesanal",
-            desc: "Catálogo online + pedidos por WhatsApp. Más pedidos, menos llamadas.",
+            desc: "Catalogo online + pedidos por WhatsApp. Mas pedidos, menos llamadas.",
             image: "/images/cases/el-gourmet.jpg",
             url: "https://website-gourmet-panaderia.vercel.app/",
         },
         {
             id: "pro-contractor",
             name: "Pro Contractor",
-            category: "Construcción",
+            category: "Construccion",
             desc: "Sitio profesional que genera consultas sin necesidad de publicidad paga.",
             image: "/images/cases/pro-contractor.jpg",
             url: "https://demo-pro-contractor.vercel.app/",
@@ -38,27 +38,27 @@ export const CLIENT = {
         {
             id: "service-clinic",
             name: "Service Clinic",
-            category: "Clínica Estética",
+            category: "Clinica Estetica",
             desc: "Presencia de alto nivel. Clientes que llegan ya decididos.",
             image: "/images/cases/service-clinic.jpg",
             url: "https://demo-service-clinic.vercel.app/",
         },
     ],
 
-    // Pricing tiers — features as BENEFITS (what the client gets, not what we build)
+    // Pricing tiers — features as BENEFITS
     services: [
         {
             id: "starter",
             name: "Starter",
             price: "USD 350",
-            delivery: "5 días",
-            desc: "Sitio de una página. Suficiente para empezar a vender.",
+            delivery: "5 dias",
+            desc: "Sitio de una pagina. Suficiente para empezar a vender.",
             features: [
-                "Tu marca se ve profesional, no genérica",
-                "Todo lo que vendés en un lugar que tus clientes encuentran",
+                "Tu marca se ve profesional, no generica",
+                "Todo lo que vendes en un lugar que tus clientes encuentran",
                 "Pedidos directo a tu celular, sin intermediarios",
                 "Funciona perfecto en el celular de tus clientes",
-                "Online en 5 días, sin complicaciones técnicas",
+                "Online en 5 dias, sin complicaciones tecnicas",
             ],
             highlight: false,
         },
@@ -66,13 +66,13 @@ export const CLIENT = {
             id: "pro",
             name: "Pro",
             price: "USD 600",
-            delivery: "10 días",
-            desc: "Sitio completo con todo para crecer. El más elegido.",
+            delivery: "10 dias",
+            desc: "Sitio completo con todo para crecer. El mas elegido.",
             features: [
-                "Todo del plan anterior, más:",
+                "Todo del plan anterior, mas:",
                 "Tu dominio propio (tuempresa.com)",
                 "Google te encuentra antes que a la competencia",
-                "Diseño que genera confianza a primera vista",
+                "Diseno que genera confianza a primera vista",
                 "1 mes de ajustes incluidos, sin extras",
             ],
             highlight: true,
@@ -82,21 +82,21 @@ export const CLIENT = {
             name: "Scale",
             price: "A consultar",
             delivery: "A convenir",
-            desc: "Para negocios que quieren más: clientes, catálogo y cobros automáticos.",
+            desc: "Para negocios que quieren mas: clientes, catalogo y cobros automaticos.",
             features: [
-                "Todo del plan anterior, más:",
-                "Actualizás tu catálogo sin tocar código",
+                "Todo del plan anterior, mas:",
+                "Actualizas tu catalogo sin tocar codigo",
                 "Productos, precios y fotos editables desde el celular",
-                "Cobrás online con MercadoPago o tarjeta",
-                "Alguien detrás del sitio, siempre",
+                "Cobras online con MercadoPago o tarjeta",
+                "Alguien detras del sitio, siempre",
             ],
             highlight: false,
         },
     ],
 
     // SEO
-    pageTitle: "Studio Olaz — Sitios web que venden",
-    metaDescription: "Agencia de desarrollo web para negocios argentinos. Tu sitio online en 5 días, optimizado para convertir visitas en clientes.",
+    pageTitle: "Aurea — Diseno y Desarrollo Web",
+    metaDescription: "Agencia de diseno y desarrollo web para negocios argentinos. Tu sitio online en 5 dias, optimizado para convertir visitas en clientes.",
 
     currency: "USD",
 } as const;

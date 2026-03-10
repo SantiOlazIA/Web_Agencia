@@ -1,4 +1,4 @@
-import Navbar from './components/Navbar';
+import GoldNavbar from './components/GoldNavbar';
 import Hero from './components/Hero';
 import Cases from './components/Cases';
 import Process from './components/Process';
@@ -9,7 +9,10 @@ import Footer from './components/Footer';
 function App() {
   return (
     <div className="relative w-full">
-      <Navbar />
+      {/* Film grain overlay — fixed, pointer-events-none, GPU-friendly */}
+      <div className="film-grain" />
+
+      <GoldNavbar />
       <main>
         <Hero />
         <Cases />

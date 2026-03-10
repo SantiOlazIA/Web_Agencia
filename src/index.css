@@ -4,12 +4,15 @@
   --font-sans: "Outfit", "system-ui", sans-serif;
   --font-serif: "Playfair Display", "Georgia", serif;
 
-  /* Luxury Tech — Deep graphite backgrounds, platinum accents, white text */
-  --color-primary: #FFFFFF;   /* pristine white — text */
-  --color-secondary: #050505; /* Deep graphite — background */
-  --color-surface: #121212;   /* Slightly lighter dark for cards */
-  --color-accent: #B0B0B0;    /* Sleek platinum/silver — CTA, highlights */
-  --color-muted: #888888;     /* Muted grey — secondary text */
+  /* Aurea — Liquid Gold on Warm Black */
+  --color-primary: #F5F0E8;
+  --color-secondary: #0A0A08;
+  --color-surface: #141310;
+  --color-surface-alt: #1A1814;
+  --color-accent: #C9A84C;
+  --color-accent-hover: #E2C36A;
+  --color-muted: #8A8070;
+  --color-border: #2A2620;
 
   --spacing-safe-nav: 6rem;
 }
@@ -28,8 +31,71 @@ body,
   -webkit-font-smoothing: antialiased;
 }
 
-/* Base Form Resets for OrderForm.tsx */
+/* Base Form Resets */
 input,
 textarea {
   outline: none;
+}
+
+/* ── Gold Shimmer (section labels) ── */
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.gold-shimmer {
+  background: linear-gradient(110deg, #C9A84C 40%, #FEEAA5 50%, #C9A84C 60%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s ease-in-out infinite;
+}
+
+/* ── Liquid Gold CTA gradient flow ── */
+@keyframes gold-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.gold-cta {
+  background: linear-gradient(135deg, #8B6914, #C9A84C, #FEEAA5, #C9A84C, #8B6914);
+  background-size: 300% 300%;
+  animation: gold-flow 5s ease infinite;
+}
+
+/* ── Spinning conic gradient for navbar ring ── */
+@keyframes spin-ring {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ── Film Grain (fixed, pointer-events-none) ── */
+@keyframes grain-drift {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-2%, -3%); }
+  30% { transform: translate(3%, 2%); }
+  50% { transform: translate(-1%, 4%); }
+  70% { transform: translate(2%, -2%); }
+  90% { transform: translate(-3%, 1%); }
+}
+
+.film-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  animation: grain-drift 8s steps(10) infinite;
+}
+
+/* ── SVG stroke trace animation ── */
+@keyframes trace-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes trace-fill {
+  to { fill-opacity: 1; }
 }
