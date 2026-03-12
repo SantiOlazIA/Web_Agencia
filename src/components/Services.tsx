@@ -99,35 +99,17 @@ const Services = () => {
                         >
                             {/* Plan name */}
                             <div className="mb-6 relative z-10">
-                                {(plan.id === 'base' || plan.id === 'pro') ? (
-                                    <>
-                                        {plan.highlight && (
-                                            <span className="text-xs font-black tracking-widest uppercase mb-3 block text-white bg-accent px-3 py-1 rounded-full w-max shadow-md">
-                                                El más elegido
-                                            </span>
-                                        )}
-                                        <div className="text-3xl md:text-4xl font-black tracking-tight text-slate-900 leading-tight">
-                                            {plan.name}
-                                        </div>
-                                        <div className="text-xl md:text-2xl font-black tracking-tight uppercase text-accent mt-2">
-                                            {plan.price}
-                                        </div>
-                                    </>
-                                ) : (
-                                    <>
-                                        <span className="text-xs font-black tracking-widest uppercase mb-4 block text-accent">
-                                            {plan.name}
-                                        </span>
-                                        <div className="text-4xl md:text-5xl font-black tracking-tighter uppercase text-slate-900 mt-2">
-                                            {plan.price}
-                                        </div>
-                                        {plan.delivery && (
-                                            <div className="text-xs mt-3 font-light tracking-widest uppercase text-primary/40">
-                                                Entrega en {plan.delivery}
-                                            </div>
-                                        )}
-                                    </>
+                                {plan.highlight && (
+                                    <span className="text-xs font-black tracking-widest uppercase mb-3 block text-white bg-accent px-3 py-1 rounded-full w-max shadow-md">
+                                        El más elegido
+                                    </span>
                                 )}
+                                <div className="text-3xl md:text-4xl font-black tracking-tight text-slate-900 leading-tight">
+                                    {plan.name}
+                                </div>
+                                <div className="text-xl md:text-2xl font-black tracking-tight uppercase text-accent mt-2">
+                                    {plan.price}
+                                </div>
                             </div>
 
                             {/* Description */}
