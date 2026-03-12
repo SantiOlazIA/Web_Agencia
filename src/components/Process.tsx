@@ -1,28 +1,39 @@
 import { motion } from 'framer-motion';
+import { BadgeCheck, Check, MonitorSmartphone, Sofa, Sparkles } from 'lucide-react';
 
 // Process — 3-step editorial timeline with gold accents
 
 const STEPS = [
     {
         num: '01',
-        title: 'Entrevista',
-        desc: 'Entendemos tu negocio, clientes y objetivos. En 30 minutos tenemos todo lo que necesitamos para empezar.',
+        title: 'Comodidad',
+        icon: Sofa,
+        desc: [
+            'Mantenimiento del sitio',
+            'Hosting y dominio incluidos',
+            <span key="resp" className="flex items-center gap-2">Adaptado a celulares y PC <MonitorSmartphone size={16} className="text-accent" /></span>
+        ],
     },
     {
         num: '02',
-        title: 'Diseno y build',
-        desc: 'Construimos tu sitio con el tema visual que mejor represente tu marca. Sin fricciones, sin reuniones infinitas.',
+        title: 'Calidad',
+        icon: Sparkles,
+        desc: ['Visual premium', 'Experiencia de usuario impecable', 'Tiempo de carga ultra rápido'],
     },
     {
         num: '03',
-        title: 'Deploy',
-        desc: 'Tu sitio publicado con dominio propio. Online en minutos, listo para recibir clientes.',
+        title: 'Conveniencia',
+        icon: BadgeCheck,
+        desc: [
+            <span key="fin">Financiación (<a href="#services" className="underline hover:text-accent transition-colors">ver precios</a>)</span>,
+            'Garantía: Primero probás, después pagás.'
+        ],
     },
 ];
 
 const Process = () => {
     return (
-        <section className="py-24 md:py-32 px-6 md:px-16 lg:px-24 bg-surface text-primary border-t border-border">
+        <section id="process" className="py-12 md:py-16 px-6 md:px-16 lg:px-24 bg-surface text-primary border-t border-border">
             <div className="max-w-7xl mx-auto">
 
                 {/* Header */}
@@ -31,14 +42,17 @@ const Process = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.7 }}
-                    className="mb-20 md:mb-24"
+                    className="mb-14 md:mb-16 relative"
                 >
-                    <span className="gold-shimmer text-[10px] tracking-[0.3em] uppercase font-bold mb-6 block">
-                        Como trabajamos
-                    </span>
-                    <h2 className="text-4xl sm:text-5xl md:text-7xl font-serif font-light tracking-tight text-primary leading-[1.1]">
-                        Simple. Rapido.<br />
-                        <span className="italic text-primary/40">Sin vueltas.</span>
+                    <motion.div
+                        animate={{ y: [-15, 15, -15], scale: [1, 1.05, 1] }}
+                        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute -top-10 -left-10 w-40 h-40 bg-accent/10 rounded-full blur-[60px] pointer-events-none"
+                    />
+
+                    <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter uppercase text-slate-900 leading-[0.9] relative z-10 mt-2">
+                        ¿POR QUÉ<br />
+                        <span className="text-accent">NOSOTROS?</span>
                     </h2>
                 </motion.div>
 
@@ -53,15 +67,23 @@ const Process = () => {
                             transition={{ delay: i * 0.15, duration: 0.6 }}
                             className={`border-t border-border md:border-t-0 md:border-l first:border-l-0 pt-10 md:pt-0 pb-10 md:pb-0 md:px-8 xl:px-12 first:pl-0 last:pr-0`}
                         >
-                            <span className="text-accent font-serif italic text-2xl tracking-widest block mb-4 md:mb-6">
+                            <span className="text-accent/20 font-black text-4xl md:text-5xl tracking-tighter block mb-4 md:mb-6">
                                 {step.num}
                             </span>
-                            <h3 className="text-2xl md:text-3xl font-sans font-light tracking-wide text-primary mb-4 leading-none">
+                            <h3 className="flex items-center gap-3 text-xl md:text-2xl font-black uppercase tracking-tight text-slate-900 mb-6 leading-none">
+                                <step.icon className="text-accent flex-shrink-0" size={28} strokeWidth={2.5} />
                                 {step.title}
                             </h3>
-                            <p className="text-primary/50 font-light leading-relaxed text-sm md:text-base max-w-xs">
-                                {step.desc}
-                            </p>
+                            <ul className="flex flex-col gap-3">
+                                {step.desc.map((item, idx) => (
+                                    <li key={idx} className="flex items-start gap-3">
+                                        <Check className="text-accent flex-shrink-0 mt-0.5" size={18} strokeWidth={3} />
+                                        <span className="text-slate-500 font-medium leading-relaxed text-sm md:text-base">
+                                            {item}
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
                         </motion.div>
                     ))}
                 </div>

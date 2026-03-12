@@ -2,11 +2,12 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { CLIENT } from '../lib/client.config';
 
-// Cases / Portfolio — gold hover effects, animated gold dividers
-
+// Cases / Portfolio — Auto-scrolling horizontal ticker
 const Cases = () => {
+    // Duplicate cases to create a seamless infinite scroll loop
+    const duplicatedCases = [...CLIENT.cases, ...CLIENT.cases];
     return (
-        <section id="cases" className="py-24 md:py-32 px-6 md:px-16 lg:px-24 bg-secondary text-primary">
+        <section id="cases" className="py-16 md:py-20 px-6 md:px-16 lg:px-24 bg-secondary text-primary">
             <div className="max-w-7xl mx-auto">
 
                 {/* Gold divider at top */}
@@ -16,7 +17,7 @@ const Cases = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                     style={{ originX: 0.5 }}
-                    className="w-full h-[1px] bg-gradient-to-r from-transparent via-accent/30 to-transparent mb-24 md:mb-32"
+                    className="w-full h-[1px] bg-gradient-to-r from-transparent via-accent/30 to-transparent mb-12"
                 />
 
                 {/* Header */}
@@ -25,68 +26,85 @@ const Cases = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.7 }}
-                    className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-20 gap-6"
+                    className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-20 gap-6 relative"
                 >
-                    <div>
-                        <span className="gold-shimmer text-[10px] tracking-[0.3em] uppercase font-bold mb-6 block">
-                            Casos reales
-                        </span>
-                        <h2 className="text-4xl md:text-6xl font-serif font-light tracking-tight leading-none">
-                            Trabajo Reciente
+                    {/* Abstract Glow behind header */}
+                    <motion.div
+                        animate={{ y: [-15, 15, -15], scale: [1, 1.05, 1] }}
+                        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute -top-10 -left-10 w-40 h-40 bg-accent/10 rounded-full blur-[60px] pointer-events-none"
+                    />
+
+                    <div className="relative z-10">
+                        <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.9] max-w-2xl text-slate-900 mt-2">
+                            UNA <span className="text-accent">PÁGINA WEB</span> A LA ALTURA DE TU <span className="text-accent">PROYECTO</span>
                         </h2>
                     </div>
-                    <p className="text-primary/50 text-base max-w-sm leading-relaxed font-light md:text-right">
-                        Cada sitio construido desde cero, optimizado para conversion.
+                    <p className="text-slate-500 text-lg md:text-xl font-medium max-w-sm leading-relaxed md:text-right relative z-10">
+                        Elegí el estilo que va con tu empresa.
                     </p>
                 </motion.div>
 
-                {/* Cases list */}
-                <div className="border-b border-border">
-                    {CLIENT.cases.map((item, i) => (
-                        <a
-                            key={item.id}
-                            href={item.url || '#'}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group border-t border-border hover:border-accent/30 py-8 md:py-10 flex items-center gap-4 md:gap-8 cursor-pointer transition-colors duration-300 block"
-                        >
-                            {/* Number */}
-                            <span className="text-primary/20 text-xs font-mono flex-shrink-0 w-7 group-hover:text-accent transition-colors duration-300">
-                                {String(i + 1).padStart(2, '0')}
-                            </span>
+                {/* Infinite Scrolling Cases Ticker */}
+                <div className="relative w-full overflow-hidden py-10 mt-8 mb-10 group">
 
-                            {/* Thumbnail */}
-                            <div className="w-16 h-16 md:w-20 md:h-20 flex-shrink-0 overflow-hidden bg-primary/5 rounded-2xl group-hover:shadow-[0_0_20px_rgba(201,168,76,0.12)] transition-shadow duration-500">
-                                <img
-                                    src={item.image}
-                                    alt={item.name}
-                                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500"
-                                />
-                            </div>
+                    {/* Gradient masks for smooth fade out at edges */}
+                    <div className="absolute top-0 left-0 w-16 md:w-32 h-full bg-gradient-to-r from-secondary to-transparent z-10 hidden sm:block pointer-events-none" />
+                    <div className="absolute top-0 right-0 w-16 md:w-32 h-full bg-gradient-to-l from-secondary to-transparent z-10 hidden sm:block pointer-events-none" />
 
-                            {/* Content */}
-                            <div className="flex-1 min-w-0 ml-4 md:ml-8">
-                                <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 md:gap-8">
-                                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-light text-primary group-hover:translate-x-3 transition-transform duration-500 leading-none">
-                                        {item.name}
-                                    </h3>
-                                    <span className="text-primary/40 text-[10px] uppercase tracking-[0.2em] flex-shrink-0">
-                                        {item.category}
-                                    </span>
+                    <motion.div
+                        className="flex gap-6 md:gap-10 w-max"
+                        animate={{ x: ["0%", "-50%"] }}
+                        transition={{
+                            duration: 30, // Adjust speed here
+                            ease: "linear",
+                            repeat: Infinity,
+                        }}
+                    >
+                        {duplicatedCases.map((item, i) => (
+                            <a
+                                key={`${item.id}-${i}`}
+                                href={item.url || '#'}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="relative flex flex-col justify-end w-[280px] h-[340px] sm:w-[320px] sm:h-[400px] md:w-[400px] md:h-[460px] rounded-3xl overflow-hidden group/card shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/5"
+                            >
+                                {/* Background Image */}
+                                <div className="absolute inset-0 w-full h-full bg-slate-900">
+                                    <img
+                                        src={item.image}
+                                        alt={item.name}
+                                        className="w-full h-full object-cover opacity-60 group-hover/card:opacity-100 group-hover/card:scale-110 transition-all duration-[800ms] ease-out grayscale group-hover/card:grayscale-0"
+                                    />
+                                    {/* Gradient Overlay for text readability */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-transparent opacity-90 group-hover/card:opacity-80 transition-opacity duration-500" />
                                 </div>
-                                <p className="text-primary/50 text-sm mt-4 font-light leading-relaxed max-w-lg">
-                                    {item.desc}
-                                </p>
-                            </div>
 
-                            {/* Arrow */}
-                            <ArrowUpRight
-                                size={20}
-                                strokeWidth={1.5}
-                                className="flex-shrink-0 text-primary/20 group-hover:text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
-                            />
-                        </a>
-                    ))}
+                                {/* Content overlaid on image */}
+                                <div className="relative z-10 p-6 sm:p-8 flex flex-col gap-3 transform translate-y-4 group-hover/card:translate-y-0 transition-transform duration-500">
+                                    <div className="flex justify-between items-start w-full">
+                                        <span className="text-accent text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase bg-slate-900/50 backdrop-blur-md px-3 py-1.5 rounded-full border border-accent/20">
+                                            {item.category}
+                                        </span>
+                                        <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center translate-x-4 opacity-0 group-hover/card:translate-x-0 group-hover/card:opacity-100 transition-all duration-500">
+                                            <ArrowUpRight size={20} className="text-white" />
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <h3 className="text-2xl sm:text-3xl font-black tracking-tighter uppercase text-white mb-2 leading-none">
+                                            {item.name}
+                                        </h3>
+                                        {item.desc && (
+                                            <p className="text-slate-300 text-sm font-light leading-relaxed line-clamp-2 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 delay-100">
+                                                {item.desc}
+                                            </p>
+                                        )}
+                                    </div>
+                                </div>
+                            </a>
+                        ))}
+                    </motion.div>
                 </div>
 
             </div>

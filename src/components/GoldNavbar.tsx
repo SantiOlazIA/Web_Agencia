@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Home, Briefcase, Layers, MessageCircle, Menu, X } from 'lucide-react';
+import { Home, Eye, Banknote, MessageCircle, Menu, X, CircleHelp } from 'lucide-react';
 
 /*
  * GoldNavbar — Fixed-top floating glassmorphism toolbar
@@ -15,8 +15,9 @@ import { Home, Briefcase, Layers, MessageCircle, Menu, X } from 'lucide-react';
 
 const NAV_ITEMS = [
     { id: 'hero', label: 'Inicio', icon: Home, href: '#hero' },
-    { id: 'cases', label: 'Casos', icon: Briefcase, href: '#cases' },
-    { id: 'services', label: 'Servicios', icon: Layers, href: '#services' },
+    { id: 'cases', label: 'Ejemplos', icon: Eye, href: '#cases' },
+    { id: 'services', label: 'Precios', icon: Banknote, href: '#services' },
+    { id: 'process', label: 'Nosotros', icon: CircleHelp, href: '#process' },
     { id: 'contact', label: 'Contacto', icon: MessageCircle, href: '#contact' },
 ];
 
@@ -52,107 +53,73 @@ const GoldNavbar = () => {
         el?.scrollIntoView({ behavior: 'smooth' });
     }, []);
 
-    const activeIndex = NAV_ITEMS.findIndex(item => item.id === activeId);
-
     return (
         <>
             {/* Ambient glow behind navbar */}
             <div
                 className="fixed top-0 right-0 w-[400px] h-[200px] pointer-events-none z-40 hidden md:block"
                 style={{
-                    background: 'radial-gradient(ellipse at 70% 0%, rgba(201,168,76,0.06) 0%, transparent 70%)',
+                    background: 'radial-gradient(ellipse at 70% 0%, rgba(37,99,235,0.06) 0%, transparent 70%)',
                 }}
             />
 
-            {/* Desktop navbar */}
+            {/* Desktop logo (top-left) - Icon + Text Horizontal Layout */}
+            <motion.a
+                href="#hero"
+                onClick={(e) => { e.preventDefault(); handleClick('#hero', 'hero') }}
+                initial={{ opacity: 0, y: -30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                className="fixed top-6 left-8 lg:left-12 z-50 hidden md:flex items-center gap-1.5 cursor-pointer hover:opacity-80 transition-all pl-3 pr-5 py-2 rounded-full"
+                style={{
+                    background: 'rgba(255, 255, 255, 0.85)',
+                    backdropFilter: 'blur(24px) saturate(1.2)',
+                    WebkitBackdropFilter: 'blur(24px) saturate(1.2)',
+                    border: '1px solid rgba(0, 0, 0, 0.06)',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.04)',
+                }}
+            >
+                {/* Scaled & Cropped Icon (Masked for perfect color match) */}
+                <div className="relative w-12 h-12 overflow-hidden flex-shrink-0 drop-shadow-[0_2px_10px_rgba(234,179,8,0.2)]">
+                    <div
+                        className="absolute top-0 left-0 w-full h-full bg-[#EAB308]"
+                        style={{
+                            WebkitMaskImage: 'url(/images/logo-aurea-clean.png)',
+                            WebkitMaskSize: '100% auto',
+                            WebkitMaskRepeat: 'no-repeat',
+                            WebkitMaskPosition: 'top center',
+                            maskImage: 'url(/images/logo-aurea-clean.png)',
+                            maskSize: '100% auto',
+                            maskRepeat: 'no-repeat',
+                            maskPosition: 'top center',
+                            transform: 'scale(1.4) translateY(-3px)',
+                            transformOrigin: 'top center'
+                        }}
+                    />
+                </div>
+                {/* Brand Text */}
+                <span className="font-serif text-[#EAB308] text-2xl font-bold tracking-[0.2em] uppercase -translate-y-[2px]">
+                    Aurea
+                </span>
+            </motion.a>
+
+            {/* Desktop navbar (right) */}
             <motion.header
                 initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 7.5 }}
-                className="fixed top-6 right-6 z-50 hidden md:flex"
+                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+                className="fixed top-6 right-8 lg:right-12 z-50 hidden md:flex"
             >
                 <nav
                     className="relative flex items-center gap-1 px-2 py-2 rounded-[22px]"
                     style={{
-                        background: 'rgba(10, 10, 8, 0.75)',
+                        background: 'rgba(255, 255, 255, 0.8)',
                         backdropFilter: 'blur(24px) saturate(1.2)',
                         WebkitBackdropFilter: 'blur(24px) saturate(1.2)',
-                        border: '1px solid rgba(201, 168, 76, 0.08)',
-                        boxShadow: '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.03)',
+                        border: '1px solid rgba(0, 0, 0, 0.06)',
+                        boxShadow: '0 8px 32px rgba(0,0,0,0.04)',
                     }}
                 >
-                    {/* Spinning gold ring indicator */}
-                    <motion.div
-                        className="absolute top-2 h-[calc(100%-16px)]"
-                        style={{ width: 52 }}
-                        animate={{ left: 8 + activeIndex * 56 }}
-                        transition={{
-                            type: 'spring',
-                            stiffness: 300,
-                            damping: 22,
-                            mass: 0.8,
-                        }}
-                    >
-                        {/* Layer 1: Glow */}
-                        <div
-                            className="absolute inset-0 rounded-[18px]"
-                            style={{
-                                boxShadow: '0 0 20px rgba(232, 175, 72, 0.15), 0 0 40px rgba(232, 175, 72, 0.05)',
-                            }}
-                        />
-
-                        {/* Layer 2: Clip container + spinning gradient */}
-                        <div className="absolute inset-0 rounded-[18px] overflow-hidden">
-                            <div
-                                className="absolute"
-                                style={{
-                                    width: '200%',
-                                    height: '200%',
-                                    top: '50%',
-                                    left: '50%',
-                                    background: `conic-gradient(
-                                        from 0deg,
-                                        #533517 0%,
-                                        #c49746 8%,
-                                        #feeaa5 16%,
-                                        #ffffff 17.5%,
-                                        #feeaa5 19%,
-                                        #c49746 25%,
-                                        #ffc0cb 26%,
-                                        #533517 27.5%,
-                                        #8B6914 35%,
-                                        #c49746 42%,
-                                        #feeaa5 48%,
-                                        #94b8ff 49.5%,
-                                        #c49746 51%,
-                                        #533517 55%,
-                                        #c49746 62%,
-                                        #feeaa5 68%,
-                                        #ffffff 69.5%,
-                                        #feeaa5 71%,
-                                        #c49746 78%,
-                                        #ffc0cb 79%,
-                                        #533517 80.5%,
-                                        #8B6914 88%,
-                                        #c49746 94%,
-                                        #94b8ff 99%,
-                                        #533517 100%
-                                    )`,
-                                    animation: 'spin-ring 4.5s linear infinite',
-                                }}
-                            />
-                        </div>
-
-                        {/* Layer 3: Inner plate */}
-                        <div
-                            className="absolute rounded-[16px]"
-                            style={{
-                                inset: '2px',
-                                background: 'rgba(10, 10, 8, 0.92)',
-                            }}
-                        />
-                    </motion.div>
-
                     {/* Nav buttons */}
                     {NAV_ITEMS.map((item, i) => {
                         const Icon = item.icon;
@@ -161,20 +128,25 @@ const GoldNavbar = () => {
                             <button
                                 key={item.id}
                                 onClick={() => handleClick(item.href, item.id)}
-                                className="relative z-10 flex items-center justify-center w-[52px] h-[44px] cursor-pointer bg-transparent border-none"
+                                className="relative z-10 flex items-center justify-center h-[44px] cursor-pointer bg-transparent border-none px-4"
                                 aria-label={item.label}
                             >
-                                <Icon
-                                    size={20}
-                                    strokeWidth={1.5}
-                                    className={`transition-colors duration-300 ${isActive ? 'text-accent' : 'text-primary/40 hover:text-primary/70'
-                                        }`}
-                                />
+                                <div className="flex items-center gap-2 group">
+                                    <Icon
+                                        size={20}
+                                        strokeWidth={1.5}
+                                        className={`transition-colors duration-300 ${isActive ? 'text-accent' : 'text-muted group-hover:text-primary'
+                                            }`}
+                                    />
+                                    <span className={`text-sm font-bold tracking-wider hidden lg:block transition-all duration-300 ${isActive ? 'text-accent' : 'text-transparent w-0 opacity-0 group-hover:text-primary group-hover:w-auto group-hover:opacity-100 group-hover:pl-1'}`}>
+                                        {item.label}
+                                    </span>
+                                </div>
                                 {/* Divider between items */}
                                 {i < NAV_ITEMS.length - 1 && (
                                     <div
                                         className="absolute right-0 top-1/2 -translate-y-1/2 w-[1px] h-4"
-                                        style={{ background: 'rgba(245, 240, 232, 0.06)' }}
+                                        style={{ background: 'rgba(0, 0, 0, 0.06)' }}
                                     />
                                 )}
                             </button>
@@ -187,15 +159,39 @@ const GoldNavbar = () => {
             <motion.header
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.5, ease: 'easeOut', delay: 7.5 }}
-                className="fixed top-0 w-full z-50 px-6 py-5 flex justify-between items-center md:hidden"
+                transition={{ duration: 1.5, ease: 'easeOut', delay: 0.2 }}
+                className="fixed top-0 w-full z-50 px-6 pt-3 pb-4 flex justify-between items-center md:hidden"
                 style={{
-                    background: 'rgba(10, 10, 8, 0.8)',
+                    background: 'rgba(255, 255, 255, 0.9)',
                     backdropFilter: 'blur(16px)',
                     WebkitBackdropFilter: 'blur(16px)',
+                    borderBottom: '1px solid rgba(0,0,0,0.05)'
                 }}
             >
-                <img src="/images/logo-aurea-clean.png" alt="Aurea" className="h-8 w-auto" style={{ mixBlendMode: 'multiply' }} />
+                <div className="flex items-center gap-2 -translate-y-1">
+                    {/* Scaled & Cropped Icon Mobile (Masked) */}
+                    <div className="relative w-10 h-10 overflow-hidden flex-shrink-0 drop-shadow-[0_2px_8px_rgba(234,179,8,0.2)]">
+                        <div
+                            className="absolute top-0 left-0 w-full h-full bg-[#EAB308]"
+                            style={{
+                                WebkitMaskImage: 'url(/images/logo-aurea-clean.png)',
+                                WebkitMaskSize: '100% auto',
+                                WebkitMaskRepeat: 'no-repeat',
+                                WebkitMaskPosition: 'top center',
+                                maskImage: 'url(/images/logo-aurea-clean.png)',
+                                maskSize: '100% auto',
+                                maskRepeat: 'no-repeat',
+                                maskPosition: 'top center',
+                                transform: 'scale(1.4)',
+                                transformOrigin: 'top center'
+                            }}
+                        />
+                    </div>
+                    {/* Brand Text Mobile */}
+                    <span className="font-serif text-[#EAB308] text-xl font-bold tracking-[0.2em] uppercase pb-1">
+                        Aurea
+                    </span>
+                </div>
                 <button
                     onClick={() => setMobileOpen(true)}
                     className="text-primary hover:text-accent transition-colors p-2 bg-transparent border-none cursor-pointer"
@@ -216,7 +212,7 @@ const GoldNavbar = () => {
                             transition={{ duration: 0.3 }}
                             className="fixed inset-0 z-[60] md:hidden"
                             style={{
-                                background: 'rgba(10, 10, 8, 0.85)',
+                                background: 'rgba(255, 255, 255, 0.85)',
                                 backdropFilter: 'blur(8px)',
                             }}
                             onClick={() => setMobileOpen(false)}

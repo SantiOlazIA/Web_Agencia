@@ -8,23 +8,14 @@ const waUrl = `https://wa.me/${CLIENT.whatsappPhone}?text=${encodeURIComponent('
 
 const Contact = () => {
     return (
-        <section id="contact" className="py-24 md:py-40 px-6 md:px-16 lg:px-24 bg-surface text-primary overflow-hidden border-t border-border">
+        <section id="contact" className="py-12 md:py-20 px-6 md:px-16 lg:px-24 bg-surface text-primary overflow-hidden border-t border-border">
             <div className="max-w-7xl mx-auto relative">
 
-                {/* Gold decorative "?" */}
-                <div
-                    className="absolute -top-16 -right-8 text-[20rem] font-serif italic leading-none select-none pointer-events-none hidden md:block"
-                    style={{ color: 'rgba(201, 168, 76, 0.03)' }}
-                >
-                    ?
-                </div>
-
-                {/* Ambient glow behind content */}
-                <div
-                    className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] pointer-events-none hidden md:block"
-                    style={{
-                        background: 'radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%)',
-                    }}
+                {/* Abstract Glow instead of serif ? */}
+                <motion.div
+                    animate={{ y: [-20, 20, -20], scale: [1, 1.1, 1] }}
+                    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute top-1/2 right-10 -translate-y-1/2 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[100px] pointer-events-none hidden md:block"
                 />
 
                 <motion.div
@@ -34,19 +25,14 @@ const Contact = () => {
                     transition={{ duration: 0.8 }}
                     className="max-w-3xl relative z-10"
                 >
-                    <span className="gold-shimmer text-[10px] tracking-[0.3em] uppercase font-bold mb-8 block">
-                        Contacto
-                    </span>
-
-                    <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-serif font-light tracking-tight text-primary leading-[1.05] mb-10">
-                        Tenes un<br />
-                        negocio?<br />
-                        <span className="italic text-accent/60">Hablemos.</span>
+                    <h2 className="text-5xl md:text-6xl lg:text-8xl font-black tracking-tighter uppercase text-slate-900 leading-[0.9] mb-8 relative z-10 w-full mt-2">
+                        HAY UN CLIENTE<br />
+                        QUE TE BUSCA.<br />
+                        <span className="text-accent">QUE TE ENCUENTRE.</span>
                     </h2>
 
-                    <p className="text-primary/60 font-light leading-relaxed text-lg mb-14 max-w-md">
-                        Contanos de tu negocio y en menos de 24hs te enviamos una propuesta.
-                        Sin compromiso.
+                    <p className="text-slate-500 font-medium leading-relaxed text-lg mb-10 max-w-md relative z-10">
+                        Hacé tu consulta. Te respondemos en menos de 24hs con una propuesta a medida. Sin compromiso.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-6">
