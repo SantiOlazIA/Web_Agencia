@@ -6,7 +6,7 @@ import AdminDashboard from './pages/AdminDashboard'
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
     const { isSignedIn, isLoaded } = useAuth()
     if (!isLoaded) return <div className="min-h-screen bg-slate-900" />
-    if (!isSignedIn) return <RedirectToSignIn />
+    if (!isSignedIn) return <RedirectToSignIn afterSignInUrl="/admin" afterSignUpUrl="/admin" />
     return <>{children}</>
 }
 
