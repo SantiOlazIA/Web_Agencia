@@ -1,10 +1,6 @@
 import { motion } from 'framer-motion';
-import { MessageCircle } from 'lucide-react';
-import { CLIENT } from '../lib/client.config';
 
 // Contact — full-width CTA section with gold decorative elements
-
-const waUrl = `https://wa.me/${CLIENT.whatsappPhone}?text=${encodeURIComponent('Hola! Quiero consultar sobre un sitio web para mi negocio.')}`;
 
 const Contact = () => {
     return (
@@ -25,33 +21,16 @@ const Contact = () => {
                     transition={{ duration: 0.8 }}
                     className="max-w-3xl relative z-10"
                 >
-                    <h2 className="text-5xl md:text-6xl lg:text-8xl font-black tracking-tighter uppercase text-slate-900 leading-[0.9] mb-8 relative z-10 w-full mt-2">
-                        HAY UN CLIENTE<br />
-                        QUE TE BUSCA.<br />
-                        <span className="text-accent">QUE TE ENCUENTRE.</span>
+                    <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter uppercase text-slate-900 leading-[0.95] mb-6 relative z-10 w-full mt-2">
+                        <span style={{ color: '#25D366' }}>+</span>PRESENCIA<br />
+                        <span style={{ color: '#25D366' }}>+</span>PROFESIONALISMO<br />
+                        <span className="text-accent">↑</span> EXPERIENCIA DE USUARIO<br />
+                        <span className="text-accent">¿VALE LA PENA EL INTENTO?</span>
                     </h2>
 
-                    <p className="text-slate-500 font-medium leading-relaxed text-lg mb-10 max-w-md relative z-10">
-                        Hacé tu consulta. Te respondemos en menos de 24hs con una propuesta a medida. Sin compromiso.
+                    <p className="text-slate-500 font-medium leading-relaxed text-lg max-w-md relative z-10">
+                        Sin complicaciones. Hacé tu consulta y te respondemos en menos de 24hs.
                     </p>
-
-                    <div className="flex flex-col sm:flex-row gap-6">
-                        <a
-                            href={waUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group inline-flex items-center justify-center gap-3 gold-cta text-secondary px-10 py-5 font-bold tracking-[0.2em] uppercase text-xs rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-transform duration-300"
-                        >
-                            <MessageCircle size={18} strokeWidth={1.5} />
-                            WhatsApp
-                        </a>
-                        <a
-                            href={`mailto:${CLIENT.email}`}
-                            className="inline-flex items-center justify-center gap-3 border border-border text-primary px-10 py-5 font-bold tracking-[0.2em] uppercase text-xs rounded-2xl hover:bg-accent hover:text-secondary hover:border-accent transition-all duration-300 active:scale-[0.98]"
-                        >
-                            {CLIENT.email}
-                        </a>
-                    </div>
                 </motion.div>
 
             </div>

@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
 import { CLIENT } from '../lib/client.config';
 
 // Cases / Portfolio — Auto-scrolling horizontal ticker
@@ -56,17 +55,14 @@ const Cases = () => {
                         className="flex gap-6 md:gap-10 w-max"
                         animate={{ x: ["0%", "-50%"] }}
                         transition={{
-                            duration: 30, // Adjust speed here
+                            duration: 12,
                             ease: "linear",
                             repeat: Infinity,
                         }}
                     >
                         {duplicatedCases.map((item, i) => (
-                            <a
+                            <div
                                 key={`${item.id}-${i}`}
-                                href={item.url || '#'}
-                                target="_blank"
-                                rel="noopener noreferrer"
                                 className="relative flex flex-col justify-end w-[280px] h-[340px] sm:w-[320px] sm:h-[400px] md:w-[400px] md:h-[460px] rounded-3xl overflow-hidden group/card shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/5"
                             >
                                 {/* Background Image */}
@@ -82,15 +78,9 @@ const Cases = () => {
 
                                 {/* Content overlaid on image */}
                                 <div className="relative z-10 p-6 sm:p-8 flex flex-col gap-3 transform translate-y-4 group-hover/card:translate-y-0 transition-transform duration-500">
-                                    <div className="flex justify-between items-start w-full">
-                                        <span className="text-accent text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase bg-slate-900/50 backdrop-blur-md px-3 py-1.5 rounded-full border border-accent/20">
-                                            {item.category}
-                                        </span>
-                                        <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center translate-x-4 opacity-0 group-hover/card:translate-x-0 group-hover/card:opacity-100 transition-all duration-500">
-                                            <ArrowUpRight size={20} className="text-white" />
-                                        </div>
-                                    </div>
-
+                                    <span className="text-accent text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase bg-slate-900/50 backdrop-blur-md px-3 py-1.5 rounded-full border border-accent/20 w-max">
+                                        {item.category}
+                                    </span>
                                     <div>
                                         <h3 className="text-2xl sm:text-3xl font-black tracking-tighter uppercase text-white mb-2 leading-none">
                                             {item.name}
@@ -102,7 +92,7 @@ const Cases = () => {
                                         )}
                                     </div>
                                 </div>
-                            </a>
+                            </div>
                         ))}
                     </motion.div>
                 </div>

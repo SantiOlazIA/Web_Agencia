@@ -69,8 +69,8 @@ export const CLIENT = {
             desc: "",
             features: [
                 "Catálogo de productos",
-                "Actualizá productos e imágenes",
-                "Control total de precios",
+                "Cambiá productos e imágenes",
+                "Actualizá los precios cuando quieras",
             ],
             highlight: true,
         },

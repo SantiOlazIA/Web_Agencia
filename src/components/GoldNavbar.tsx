@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Home, Eye, Banknote, MessageCircle, Menu, X, CircleHelp } from 'lucide-react';
+import { Home, Eye, Banknote, MessageCircle, Menu, X, CircleHelp, ShieldCheck, Lock } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 /*
  * GoldNavbar — Fixed-top floating glassmorphism toolbar
@@ -16,8 +17,9 @@ import { Home, Eye, Banknote, MessageCircle, Menu, X, CircleHelp } from 'lucide-
 const NAV_ITEMS = [
     { id: 'hero', label: 'Inicio', icon: Home, href: '#hero' },
     { id: 'cases', label: 'Ejemplos', icon: Eye, href: '#cases' },
-    { id: 'services', label: 'Precios', icon: Banknote, href: '#services' },
     { id: 'process', label: 'Nosotros', icon: CircleHelp, href: '#process' },
+    { id: 'seguridad', label: 'Seguridad', icon: ShieldCheck, href: '#seguridad' },
+    { id: 'services', label: 'Precios', icon: Banknote, href: '#services' },
     { id: 'contact', label: 'Contacto', icon: MessageCircle, href: '#contact' },
 ];
 
@@ -152,8 +154,30 @@ const GoldNavbar = () => {
                             </button>
                         );
                     })}
+
                 </nav>
             </motion.header>
+
+            {/* Client login button — below desktop navbar */}
+            <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
+                className="fixed top-[112px] right-8 lg:right-12 z-50 hidden md:block"
+            >
+                <Link
+                    to="/admin"
+                    className="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-black tracking-widest uppercase transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
+                    style={{
+                        background: 'var(--color-accent)',
+                        color: '#1a1200',
+                        boxShadow: '0 4px 20px rgba(234,179,8,0.35)',
+                    }}
+                >
+                    <Lock size={13} strokeWidth={2.5} />
+                    Login de clientes
+                </Link>
+            </motion.div>
 
             {/* Mobile header */}
             <motion.header
@@ -250,6 +274,23 @@ const GoldNavbar = () => {
                                         </motion.button>
                                     );
                                 })}
+
+                                {/* Admin link */}
+                                <motion.div
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: NAV_ITEMS.length * 0.08 }}
+                                    className="pt-4 border-t border-border mt-2"
+                                >
+                                    <Link
+                                        to="/admin"
+                                        onClick={() => setMobileOpen(false)}
+                                        className="flex items-center gap-4 text-sm font-semibold text-muted hover:text-accent transition-colors"
+                                    >
+                                        <Lock size={18} strokeWidth={1.5} />
+                                        Panel de admin
+                                    </Link>
+                                </motion.div>
                             </nav>
                         </motion.div>
                     </>

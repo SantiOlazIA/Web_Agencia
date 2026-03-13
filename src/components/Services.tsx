@@ -22,8 +22,8 @@ const GoogleMapsIcon = () => (
 
 const proFeatureIcons: Record<string, ReactElement> = {
     "Catálogo de productos": <ShoppingBag size={15} strokeWidth={2} className="flex-shrink-0 mt-0.5 text-accent" />,
-    "Actualizá productos e imágenes": <RefreshCw size={15} strokeWidth={2} className="flex-shrink-0 mt-0.5 text-accent" />,
-    "Control total de precios": <Tag size={15} strokeWidth={2} className="flex-shrink-0 mt-0.5 text-accent" />,
+    "Cambiá productos e imágenes": <RefreshCw size={15} strokeWidth={2} className="flex-shrink-0 mt-0.5 text-accent" />,
+    "Actualizá los precios cuando quieras": <Tag size={15} strokeWidth={2} className="flex-shrink-0 mt-0.5 text-accent" />,
 };
 
 const baseFeatureIcons: Record<string, ReactElement> = {
@@ -59,7 +59,7 @@ const Services = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.7 }}
-                    className="mb-10 md:mb-16 relative"
+                    className="mb-6 md:mb-8 relative"
                 >
                     <motion.div
                         animate={{ y: [-15, 15, -15], scale: [1, 1.05, 1] }}
@@ -76,6 +76,12 @@ const Services = () => {
                     <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-wide uppercase leading-[0.9] text-slate-900 relative z-10 mt-2" style={{ wordSpacing: '0.25em' }}>
                         PLANES Y <span className="text-accent">PRECIOS.</span>
                     </h2>
+                    <div className="mt-4 relative z-10">
+                        <span className="inline-flex items-center gap-2 text-xs font-black tracking-widest uppercase bg-red-500 text-white px-4 py-2 rounded-full shadow-sm">
+                            <Tag size={12} strokeWidth={2.5} />
+                            Oferta de lanzamiento
+                        </span>
+                    </div>
                 </motion.div>
 
                 {/* Subsección 1: Diseño y Desarrollo Web */}

@@ -49,9 +49,6 @@ const Footer = () => {
                     <h4 className="uppercase tracking-widest text-xs font-semibold mb-4 text-primary/40">Contacto</h4>
                     <ul className="space-y-2 text-sm text-muted">
                         <li>
-                            <a href={`mailto:${CLIENT.email}`} className="hover:text-accent transition-colors">{CLIENT.email}</a>
-                        </li>
-                        <li>
                             <a href={`https://wa.me/${CLIENT.whatsappPhone}`} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">WhatsApp</a>
                         </li>
                     </ul>
