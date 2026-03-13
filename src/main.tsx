@@ -4,19 +4,22 @@ import { ClerkProvider } from '@clerk/react'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import AppRouter from './router.tsx'
+import App from './App.tsx'
 
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY as string
-
-if (!PUBLISHABLE_KEY) {
-  throw new Error('Missing VITE_CLERK_PUBLISHABLE_KEY in .env')
-}
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY as string | undefined
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+    {PUBLISHABLE_KEY ? (
+      <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+        <BrowserRouter>
+          <AppRouter />
+        </BrowserRouter>
+      </ClerkProvider>
+    ) : (
       <BrowserRouter>
-        <AppRouter />
+        <App />
       </BrowserRouter>
-    </ClerkProvider>
+    )}
   </StrictMode>,
 )
