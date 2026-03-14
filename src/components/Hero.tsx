@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { ShieldCheck, TrendingUp, Settings, Code2, Layers, Cpu, Eye, DollarSign } from 'lucide-react';
+import { Code2, Layers, Cpu, Eye, DollarSign } from 'lucide-react';
+import { StarAnim, BrickWallAnim, ConveyorAnim } from './HeroAnimations';
 
 const Hero = () => {
     return (
@@ -53,9 +54,7 @@ const Hero = () => {
                             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                             className="flex flex-col items-center gap-2 w-28 md:w-32"
                         >
-                            <div className="w-11 h-11 rounded-2xl bg-emerald-50 flex items-center justify-center">
-                                <ShieldCheck className="text-emerald-600" size={20} strokeWidth={2} />
-                            </div>
+                            <BrickWallAnim />
                             <span className="text-slate-800 text-sm font-bold tracking-wide leading-tight text-center">Más Seguridad</span>
                             <span className="text-slate-400 text-xs font-medium text-center">Certificación SSL</span>
                         </motion.div>
@@ -65,9 +64,7 @@ const Hero = () => {
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
                             className="flex flex-col items-center gap-2 w-28 md:w-32"
                         >
-                            <div className="w-11 h-11 rounded-2xl bg-emerald-50 flex items-center justify-center">
-                                <TrendingUp className="text-emerald-600" size={20} strokeWidth={2} />
-                            </div>
+                            <StarAnim />
                             <span className="text-slate-800 text-sm font-bold tracking-wide leading-tight text-center">Más Calidad Visual</span>
                             <span className="text-slate-400 text-xs font-medium text-center">Animaciones y UX</span>
                         </motion.div>
@@ -77,9 +74,7 @@ const Hero = () => {
                             transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                             className="flex flex-col items-center gap-2 w-28 md:w-32"
                         >
-                            <div className="w-11 h-11 rounded-2xl bg-emerald-50 flex items-center justify-center">
-                                <Settings className="text-emerald-600" size={20} strokeWidth={2} />
-                            </div>
+                            <ConveyorAnim />
                             <span className="text-slate-800 text-sm font-bold tracking-wide leading-tight text-center">Más Control</span>
                             <span className="text-slate-400 text-xs font-medium text-center">Sitios autogestionables</span>
                         </motion.div>
