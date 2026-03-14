@@ -5,7 +5,7 @@ const Hero = () => {
     return (
         <section
             id="hero"
-            className="relative min-h-[90vh] flex flex-col justify-center items-center overflow-hidden bg-slate-50 px-4 pt-10"
+            className="relative h-[100dvh] flex flex-col justify-start items-center overflow-hidden bg-slate-50 px-4 pt-28 pb-16"
         >
             {/* Background Radial Glow - Adjusted for light theme */}
             <div className="absolute inset-0 z-0 flex justify-center items-center pointer-events-none">
@@ -13,84 +13,75 @@ const Hero = () => {
             </div>
 
             {/* Content Container */}
-            <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-6xl mx-auto text-center mt-6">
+            <div className="relative z-10 flex flex-col items-center justify-between flex-1 w-full max-w-6xl mx-auto text-center">
 
-                {/* Clarity Subtitle: Explicitly what we do */}
-                <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.1 }}
-                    className="mb-0 inline-block"
-                >
-                    <span className="text-accent font-bold tracking-[0.2em] uppercase text-sm md:text-base">
-                        Agencia de Diseño y Desarrollo Web
-                    </span>
-                </motion.div>
+                {/* TOP GROUP: subtitle + H1 tight together */}
+                <div className="flex flex-col items-center gap-3">
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.1 }}
+                    >
+                        <span className="text-accent font-bold tracking-[0.2em] uppercase text-base md:text-xl">
+                            Agencia de Diseño y Desarrollo Web
+                        </span>
+                    </motion.div>
 
-                {/* Massive Typography Headline: AI Revolution hook restored */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 0.3, type: "spring", stiffness: 80, damping: 20 }}
-                    className="w-full flex-col items-center flex"
-                >
-                    <h1 className="text-[12vw] sm:text-[10vw] md:text-[90px] lg:text-[110px] font-black tracking-tighter leading-[0.9] uppercase text-slate-900 mb-2 md:mb-4 max-w-5xl mt-0">
-                        LA REVOLUCIÓN<br />
-                        DE LA <span className="text-accent">IA.</span>
-                    </h1>
-                </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 0.3, type: "spring", stiffness: 80, damping: 20 }}
+                        className="w-full"
+                    >
+                        <h1 className="text-[12vw] sm:text-[10vw] md:text-[90px] lg:text-[110px] font-black tracking-tighter leading-[0.9] uppercase text-slate-900 max-w-5xl mx-auto">
+                            LA REVOLUCIÓN<br />
+                            DE LA <span className="text-accent">IA.</span>
+                        </h1>
+                    </motion.div>
+                </div>
 
-                {/* High Value Market Propositions - Detail Cards */}
+                {/* BOTTOM GROUP: 3 cards + CTAs */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.6 }}
-                    className="flex flex-col items-center w-full mt-2"
+                    className="flex flex-col items-center w-full gap-6"
                 >
-                    <div className="flex flex-col sm:flex-row flex-wrap justify-center items-stretch gap-6 sm:gap-6 mb-8 max-w-6xl mx-auto px-4">
-                        {/* Card 1: Security */}
+                    <div className="flex flex-row justify-center items-start gap-10 md:gap-16 w-full">
                         <motion.div
-                            animate={{ y: [0, -5, 0] }}
+                            animate={{ y: [0, -6, 0] }}
                             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                            className="flex flex-col items-center text-center gap-1 bg-white/90 border border-slate-200 backdrop-blur-md px-6 py-4 rounded-2xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 w-full sm:w-auto"
+                            className="flex flex-col items-center gap-2 w-28 md:w-32"
                         >
-                            <div className="flex justify-center items-center gap-2 mb-1">
-                                <ShieldCheck className="text-emerald-600" size={24} />
-                                <span className="text-slate-900 text-lg font-bold tracking-wide">Más Seguridad</span>
+                            <div className="w-11 h-11 rounded-2xl bg-emerald-50 flex items-center justify-center">
+                                <ShieldCheck className="text-emerald-600" size={20} strokeWidth={2} />
                             </div>
-                            <p className="text-slate-600 text-sm font-medium">
-                                Certificación SSL
-                            </p>
+                            <span className="text-slate-800 text-sm font-bold tracking-wide leading-tight text-center">Más Seguridad</span>
+                            <span className="text-slate-400 text-xs font-medium text-center">Certificación SSL</span>
                         </motion.div>
 
-                        {/* Card 2: Visual Quality */}
                         <motion.div
-                            animate={{ y: [0, -5, 0] }}
+                            animate={{ y: [0, -6, 0] }}
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                            className="flex flex-col items-center text-center gap-1 bg-white/90 border border-slate-200 backdrop-blur-md px-8 py-4 rounded-2xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 w-full sm:w-auto"
+                            className="flex flex-col items-center gap-2 w-28 md:w-32"
                         >
-                            <div className="flex justify-center items-center gap-2 mb-1">
-                                <TrendingUp className="text-emerald-600" size={24} />
-                                <span className="text-slate-900 text-lg font-bold tracking-wide">Más Calidad Visual</span>
+                            <div className="w-11 h-11 rounded-2xl bg-emerald-50 flex items-center justify-center">
+                                <TrendingUp className="text-emerald-600" size={20} strokeWidth={2} />
                             </div>
-                            <p className="text-slate-600 text-sm font-medium">
-                                Animaciones y optimización de UX
-                            </p>
+                            <span className="text-slate-800 text-sm font-bold tracking-wide leading-tight text-center">Más Calidad Visual</span>
+                            <span className="text-slate-400 text-xs font-medium text-center">Animaciones y UX</span>
                         </motion.div>
 
-                        {/* Card 3: Control */}
                         <motion.div
-                            animate={{ y: [0, -5, 0] }}
+                            animate={{ y: [0, -6, 0] }}
                             transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                            className="flex flex-col items-center text-center gap-1 bg-white/90 border border-slate-200 backdrop-blur-md px-6 py-4 rounded-2xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 w-full sm:w-auto"
+                            className="flex flex-col items-center gap-2 w-28 md:w-32"
                         >
-                            <div className="flex justify-center items-center gap-2 mb-1">
-                                <Settings className="text-emerald-600" size={24} />
-                                <span className="text-slate-900 text-lg font-bold tracking-wide">Más Control</span>
+                            <div className="w-11 h-11 rounded-2xl bg-emerald-50 flex items-center justify-center">
+                                <Settings className="text-emerald-600" size={20} strokeWidth={2} />
                             </div>
-                            <p className="text-slate-600 text-sm font-medium">
-                                Sitios autogestionables
-                            </p>
+                            <span className="text-slate-800 text-sm font-bold tracking-wide leading-tight text-center">Más Control</span>
+                            <span className="text-slate-400 text-xs font-medium text-center">Sitios autogestionables</span>
                         </motion.div>
                     </div>
 
@@ -143,7 +134,7 @@ const Hero = () => {
             >
                 <Cpu size={110} strokeWidth={0.5} />
             </motion.div>
-        </section >
+        </section>
     );
 };
 

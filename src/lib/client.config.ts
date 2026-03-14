@@ -57,7 +57,7 @@ export const CLIENT = {
                 "Secciones Institucionales (Presentación + Contacto)",
                 "Alta velocidad de carga",
                 "Gráficos de calidad y animaciones sencillas",
-                "Integración con WhatsApp y Google Maps"
+                "Integración con WhatsApp, Google Maps e Instagram"
             ],
             highlight: false,
         },

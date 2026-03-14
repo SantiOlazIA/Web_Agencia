@@ -21,6 +21,34 @@
 *   **Simplicity over complex fragility**: When designing premium, "luxury tech" interfaces, a clean, perfectly aligned, and robust layout is almost always better than a highly complex animation that is prone to visual bugs, alignment issues, or timeline fragility. A simple, elegant fade-in of a high-quality asset communicates luxury better than a broken or misaligned complex effect. 
 *   **Cohesive Vertical Density**: Avoid stacking massive paddings and margins between sections (e.g., `py-32` on a section container *plus* `mb-32` on an internal element). Keep the vertical rhythm tight so sections feel like a continuous scrolling journey rather than isolated islands floating in empty space.
 
+## Conversión y Copywriting (2026-03-11)
+
+### El Drunk Test es la métrica número uno
+- Antes de marcar cualquier sección como terminada: ¿puede un visitante distraído entender en 5 segundos qué hacemos y qué hacer?
+- Si el H1 es tendencia ("LA REVOLUCIÓN DE LA IA") en vez de beneficio, la sección falla el test.
+
+### Features vs. Benefits — regla de oro
+- ❌ Feature: "Certificación SSL", "Visual premium", "Experiencia de usuario impecable"
+- ✓ Benefit: "Tus clientes no se van a otro lado", "Diseño que convierte visitas en consultas"
+- Regla: para cada feature, preguntarse "¿y eso qué le da al cliente?"
+
+### El diferenciador más fuerte siempre al frente
+- "Primero probás, después pagás" es la propuesta más potente de Aurea y estaba en el bullet 7 de una sección secundaria.
+- Regla: el diferenciador clave va en Hero (tarjeta o subtítulo) y en Process (paso destacado). No enterrado.
+
+### DRY en datos de contacto
+- El teléfono de WhatsApp estaba hardcodeado en App.tsx Y Hero.tsx ignorando `CLIENT.whatsappPhone` del config.
+- Regla: cualquier dato de contacto/precio/copy siempre sale de `client.config.ts`. Cero literales en componentes.
+
+### TypeScript + `as const` + `.filter()` → ternarios imposibles
+- Si se filtra un array `as const` con `filter(p => p.id === 'a' || p.id === 'b')`, TypeScript sabe que el conjunto resultante solo puede tener esos ids.
+- Un ternario `(plan.id === 'a' || plan.id === 'b') ? ... : ...` dentro del `.map()` posterior tiene rama `else` de tipo `never` → error en build.
+- Fix: eliminar el ternario, la rama `else` nunca se ejecuta de todas formas.
+
+### Portfolio sin resultados concretos = 0 credibilidad
+- Cases con `desc: ""` + `url: "#"` + categorías estéticas ("Cálido y Acogedor") no prueban nada.
+- Mínimo viable: 1-2 oraciones de resultado por caso. Ideal: métrica real ("triplicó la tasa de contacto").
+
 ## Development Best Practices
 
 *   **Audit your assets first**: Always double-check exactly what is contained in the image assets (especially transparency and baked-in text) before writing complex layout code around them.
