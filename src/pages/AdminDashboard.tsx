@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useUser, UserButton } from '@clerk/react'
+import { useAuth, useUser, UserButton } from '@clerk/react'
 import { TrendingUp, TrendingDown, Minus } from 'lucide-react'
 import { fetchRegistros } from '../lib/sheets'
 import type { Registro } from '../lib/mockData'
@@ -12,17 +12,17 @@ function formatARS(value: string) {
 }
 
 export default function AdminDashboard() {
+    const { getToken } = useAuth()
     const { user } = useUser()
     const [tab, setTab] = useState<Tab>('ventas')
     const [registros, setRegistros] = useState<Registro[]>([])
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        fetchRegistros().then(data => {
-            setRegistros(data)
-            setLoading(false)
-        })
-    }, [])
+        getToken()
+            .then(token => fetchRegistros(token ?? undefined))
+            .then(data => { setRegistros(data); setLoading(false) })
+    }, [getToken])
 
     const ventas = registros.filter(r => r.Tipo === 'Venta')
     const gastos = registros.filter(r => r.Tipo === 'Gasto')
