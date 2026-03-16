@@ -216,6 +216,13 @@ const GoldNavbar = () => {
                         Aurea
                     </span>
                 </div>
+                <Link
+                    to="/admin"
+                    className="flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase text-accent border border-accent/30 rounded-full px-3 py-1.5 hover:bg-accent/10 transition-colors"
+                >
+                    <Lock size={13} strokeWidth={2} />
+                    Login
+                </Link>
                 <button
                     onClick={() => setMobileOpen(true)}
                     className="text-primary hover:text-accent transition-colors p-2 bg-transparent border-none cursor-pointer"

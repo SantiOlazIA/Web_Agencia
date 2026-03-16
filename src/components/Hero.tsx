@@ -6,7 +6,7 @@ const Hero = () => {
     return (
         <section
             id="hero"
-            className="relative h-[100dvh] flex flex-col justify-start items-center overflow-hidden bg-slate-50 px-4 pt-28 pb-16"
+            className="relative min-h-[100dvh] flex flex-col justify-start items-center overflow-hidden bg-slate-50 px-4 pt-32 pb-16"
         >
             {/* Background Radial Glow - Adjusted for light theme */}
             <div className="absolute inset-0 z-0 flex justify-center items-center pointer-events-none">
