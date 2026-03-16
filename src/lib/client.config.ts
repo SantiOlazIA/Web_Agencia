@@ -77,7 +77,7 @@ export const CLIENT = {
         {
             id: "retainer",
             name: "Mantenimiento",
-            price: "$5.000/mes",
+            price: "Gratis 3 meses, luego $10.000/mes",
             delivery: "",
             desc: "",
             features: [
@@ -89,8 +89,8 @@ export const CLIENT = {
         },
         {
             id: "analytics",
-            name: "Post-venta integral",
-            price: "$8.000/mes",
+            name: "Analíticas y Post-venta",
+            price: "$10.000/mes (3 meses), luego $30.000/mes",
             delivery: "",
             desc: "",
             features: [

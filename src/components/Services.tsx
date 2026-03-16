@@ -180,21 +180,35 @@ const Services = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.1, duration: 0.5 }}
-                                className="group flex flex-col p-8 md:p-10 rounded-3xl transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden bg-white/60 border border-slate-200 hover:bg-white hover:border-accent/30 hover:shadow-lg"
+                                className={`group flex flex-col p-8 md:p-10 rounded-3xl transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden ${
+                                    plan.id === 'analytics'
+                                        ? 'bg-white shadow-xl border-2 border-accent/50 hover:border-accent hover:shadow-[0_0_40px_rgba(234,179,8,0.2)]'
+                                        : 'bg-white/60 border border-slate-200 hover:bg-white hover:border-emerald-300 hover:shadow-lg'
+                                }`}
                             >
                                 {/* Plan name */}
                                 <div className="mb-6 relative z-10">
-                                    <span className="text-xs font-black tracking-widest uppercase mb-4 block text-accent">
-                                        {plan.name}
-                                    </span>
-                                    <div className="text-4xl md:text-5xl font-black tracking-tighter uppercase text-slate-900 mt-2">
-                                        {plan.price}
-                                    </div>
-                                    {plan.delivery && (
-                                        <div className="text-xs mt-3 font-light tracking-widest uppercase text-primary/40">
-                                            Entrega en {plan.delivery}
-                                        </div>
+                                    {plan.id === 'analytics' && (
+                                        <span className="text-xs font-black tracking-widest uppercase mb-3 block text-white bg-accent px-3 py-1 rounded-full w-max shadow-md">
+                                            Recomendado
+                                        </span>
                                     )}
+                                    {plan.id === 'retainer' && (
+                                        <span className="text-xs font-black tracking-widest uppercase mb-3 block text-white bg-emerald-500 px-3 py-1 rounded-full w-max shadow-sm">
+                                            🔥 3 meses gratis
+                                        </span>
+                                    )}
+                                    <div className="text-3xl md:text-4xl font-black tracking-tight text-slate-900 leading-tight">
+                                        {plan.name}
+                                    </div>
+                                    <div className="text-base md:text-lg font-bold tracking-tight text-slate-700 mt-2 leading-snug">
+                                        {plan.id === 'retainer' && (
+                                            <><span className="text-emerald-500">Gratis 3 meses</span>, luego $10.000/mes</>
+                                        )}
+                                        {plan.id === 'analytics' && (
+                                            <>$10.000/mes <span className="text-accent">(3 meses)</span>, luego $30.000/mes</>
+                                        )}
+                                    </div>
                                 </div>
 
                                 {plan.desc && (
@@ -206,7 +220,7 @@ const Services = () => {
                                 <ul className="space-y-3 mb-6">
                                     {plan.features.map((f) => (
                                         <li key={f} className="flex items-start gap-3">
-                                            <Check size={14} strokeWidth={2} className="flex-shrink-0 mt-0.5 text-accent" />
+                                            <Check size={14} strokeWidth={2} className={`flex-shrink-0 mt-0.5 ${plan.id === 'retainer' ? 'text-emerald-500' : 'text-accent'}`} />
                                             <span className="text-sm font-light text-primary/70">{f}</span>
                                         </li>
                                     ))}
@@ -216,7 +230,11 @@ const Services = () => {
                                     href={`${waBase}${encodeURIComponent(`Hola! Me interesa el plan ${plan.name} (${plan.price}). Podemos hablar?`)}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="block text-center py-4 text-sm font-black tracking-widest uppercase rounded-2xl transition-all duration-300 active:scale-[0.98] mt-auto border border-border text-primary hover:bg-accent hover:text-secondary hover:border-accent"
+                                    className={`block text-center py-4 text-sm font-black tracking-widest uppercase rounded-2xl transition-all duration-300 active:scale-[0.98] mt-auto ${
+                                        plan.id === 'analytics'
+                                            ? 'gold-cta text-secondary hover:scale-[1.02]'
+                                            : 'border border-emerald-300 text-emerald-700 hover:bg-emerald-500 hover:text-white hover:border-emerald-500'
+                                    }`}
                                 >
                                     Empezar
                                 </a>

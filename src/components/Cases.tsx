@@ -1,10 +1,10 @@
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { CLIENT } from '../lib/client.config';
 
-// Cases / Portfolio — Auto-scrolling horizontal ticker
+// Cases / Portfolio — Drag-to-scroll horizontal row
 const Cases = () => {
-    // Duplicate cases to create a seamless infinite scroll loop
-    const duplicatedCases = [...CLIENT.cases, ...CLIENT.cases];
+    const containerRef = useRef<HTMLDivElement>(null);
     return (
         <section id="cases" className="py-16 md:py-20 px-6 md:px-16 lg:px-24 bg-secondary text-primary">
             <div className="max-w-7xl mx-auto">
@@ -44,25 +44,23 @@ const Cases = () => {
                     </p>
                 </motion.div>
 
-                {/* Infinite Scrolling Cases Ticker */}
-                <div className="relative w-full overflow-hidden py-10 mt-8 mb-10 group">
+                {/* Drag-to-scroll Cases Row */}
+                <div ref={containerRef} className="relative w-full overflow-hidden py-10 mt-8 mb-10 cursor-grab active:cursor-grabbing">
 
-                    {/* Gradient masks for smooth fade out at edges */}
-                    <div className="absolute top-0 left-0 w-16 md:w-32 h-full bg-gradient-to-r from-secondary to-transparent z-10 hidden sm:block pointer-events-none" />
-                    <div className="absolute top-0 right-0 w-16 md:w-32 h-full bg-gradient-to-l from-secondary to-transparent z-10 hidden sm:block pointer-events-none" />
+                    {/* Gradient masks */}
+                    <div className="absolute top-0 left-0 w-16 md:w-32 h-full bg-gradient-to-r from-secondary to-transparent z-10 pointer-events-none" />
+                    <div className="absolute top-0 right-0 w-16 md:w-32 h-full bg-gradient-to-l from-secondary to-transparent z-10 pointer-events-none" />
 
                     <motion.div
+                        drag="x"
+                        dragConstraints={containerRef}
+                        dragElastic={0.05}
+                        dragTransition={{ bounceStiffness: 200, bounceDamping: 30 }}
                         className="flex gap-6 md:gap-10 w-max"
-                        animate={{ x: ["0%", "-50%"] }}
-                        transition={{
-                            duration: 12,
-                            ease: "linear",
-                            repeat: Infinity,
-                        }}
                     >
-                        {duplicatedCases.map((item, i) => (
+                        {CLIENT.cases.map((item, i) => (
                             <div
-                                key={`${item.id}-${i}`}
+                                key={item.id}
                                 className="relative flex flex-col justify-end w-[280px] h-[340px] sm:w-[320px] sm:h-[400px] md:w-[400px] md:h-[460px] rounded-3xl overflow-hidden group/card shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/5"
                             >
                                 {/* Background Image */}
