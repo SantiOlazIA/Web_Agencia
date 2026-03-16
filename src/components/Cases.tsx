@@ -58,7 +58,7 @@ const Cases = () => {
                         dragTransition={{ bounceStiffness: 200, bounceDamping: 30 }}
                         className="flex gap-6 md:gap-10 w-max"
                     >
-                        {CLIENT.cases.map((item, i) => (
+                        {CLIENT.cases.map((item) => (
                             <div
                                 key={item.id}
                                 className="relative flex flex-col justify-end w-[280px] h-[340px] sm:w-[320px] sm:h-[400px] md:w-[400px] md:h-[460px] rounded-3xl overflow-hidden group/card shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/5"
