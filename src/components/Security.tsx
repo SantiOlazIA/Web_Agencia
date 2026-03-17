@@ -4,27 +4,27 @@ import { KeyRound, Lock, Globe, EyeOff } from 'lucide-react';
 const TRUST_CARDS = [
     {
         icon: KeyRound,
-        tag: 'clerk.com',
-        title: 'Auth con Clerk',
-        body: 'Los logins van por Clerk. Ni vos ni nosotros tocamos contraseñas.',
+        tag: 'Contraseñas seguras',
+        title: 'Tus contraseñas, en buenas manos',
+        body: 'Usamos el mismo sistema de login que usan apps con millones de usuarios. Nosotros nunca vemos tus datos.',
     },
     {
         icon: Lock,
-        tag: 'Vercel TLS',
-        title: 'HTTPS en cada deploy',
-        body: 'Certificado SSL automático desde el día 1. Sin configurar nada.',
+        tag: 'Activo desde el día 1',
+        title: 'El candadito verde, siempre activo',
+        body: 'El símbolo de confianza que tus clientes ven antes de contactarte. Aparece solo, sin que hagas nada.',
     },
     {
         icon: Globe,
-        tag: '99.99% uptime',
-        title: 'Vercel Edge Network',
-        body: 'CDN global. La misma infra que usan Notion y Linear.',
+        tag: '24/7, sin caídas',
+        title: 'Tu sitio, siempre disponible',
+        body: 'La misma infraestructura que usan empresas internacionales. Si ellos no se caen, vos tampoco.',
     },
     {
         icon: EyeOff,
-        tag: 'zero data storage',
-        title: 'Sin base de datos propia',
-        body: 'El formulario va directo a tu WhatsApp. No hay nada que hackear.',
+        tag: 'Nada que robar',
+        title: 'No guardamos datos de nadie',
+        body: 'Los mensajes te llegan directo por WhatsApp. No guardamos información de tus clientes. No hay nada que hackear.',
     },
 ];
 
@@ -51,7 +51,7 @@ const Security = () => {
                         <span className="text-accent">PROTEGIDO.</span>
                     </h2>
                     <p className="mt-4 text-slate-500 text-base md:text-lg max-w-lg">
-                        Stack conocido, proveedores auditados. Cero datos nuestros en el medio.
+                        Tu sitio no guarda datos de tus clientes. Nunca se cae. Y siempre se ve seguro.
                     </p>
                 </motion.div>
 
