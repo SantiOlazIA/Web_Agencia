@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Code2, Layers, Cpu, Eye, DollarSign } from 'lucide-react';
+import { Code2, Layers, Cpu, Eye, Flame } from 'lucide-react';
 import { StarAnim, BrickWallAnim, ConveyorAnim } from './HeroAnimations';
 
 const Hero = () => {
@@ -35,8 +35,8 @@ const Hero = () => {
                         className="w-full"
                     >
                         <h1 className="text-[12vw] sm:text-[10vw] md:text-[90px] lg:text-[110px] font-black tracking-tighter leading-[0.9] uppercase text-slate-900 max-w-5xl mx-auto">
-                            LA REVOLUCIÓN<br />
-                            DE LA <span className="text-accent">IA.</span>
+                            TU NEGOCIO,<br />
+                            <span className="text-accent">ONLINE.</span>
                         </h1>
                     </motion.div>
                 </div>
@@ -81,13 +81,26 @@ const Hero = () => {
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-6 md:gap-8 justify-center items-center w-full px-6">
-                        <a href="#cases" className="gold-cta flex items-center justify-center gap-2 text-secondary px-8 py-5 font-bold tracking-wider uppercase text-xs sm:text-sm rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-150 w-full sm:w-auto">
+                        <motion.a
+                            href="#services"
+                            animate={{
+                                boxShadow: [
+                                    '0 4px 20px rgba(234,179,8,0.45)',
+                                    '0 4px 38px rgba(251,146,60,0.65)',
+                                    '0 4px 28px rgba(239,68,68,0.5)',
+                                    '0 4px 38px rgba(251,146,60,0.65)',
+                                    '0 4px 20px rgba(234,179,8,0.45)',
+                                ]
+                            }}
+                            transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+                            className="gold-cta flex items-center justify-center gap-2 text-secondary px-8 py-5 font-bold tracking-wider uppercase text-xs sm:text-sm rounded-2xl hover:scale-105 active:scale-95 transition-transform duration-150 w-full sm:w-auto"
+                        >
+                            <Flame size={20} className="text-orange-500 drop-shadow-[0_0_4px_rgba(251,146,60,0.8)]" />
+                            Conseguí tu página por sólo $250.000
+                        </motion.a>
+                        <a href="#cases" className="border border-slate-300 flex items-center justify-center gap-2 bg-white/50 text-slate-800 px-8 py-5 font-bold tracking-wider uppercase text-xs sm:text-sm rounded-2xl hover:bg-slate-100 hover:scale-[1.02] active:scale-95 transition-all duration-150 w-full sm:w-auto">
                             <Eye size={20} />
                             ¿Cómo podría verse mi página web?
-                        </a>
-                        <a href="#services" className="border border-slate-300 flex items-center justify-center gap-2 bg-white/50 text-slate-800 px-8 py-5 font-bold tracking-wider uppercase text-xs sm:text-sm rounded-2xl hover:bg-slate-100 hover:scale-[1.02] active:scale-95 transition-all duration-150 w-full sm:w-auto">
-                            <DollarSign size={20} />
-                            ¿Cuánto sale una página web?
                         </a>
                     </div>
                 </motion.div>

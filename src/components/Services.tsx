@@ -86,7 +86,7 @@ const Services = () => {
                     <div className="mt-4 relative z-10">
                         <span className="inline-flex items-center gap-2 text-xs font-black tracking-widest uppercase bg-red-500 text-white px-4 py-2 rounded-full shadow-sm">
                             <Tag size={12} strokeWidth={2.5} />
-                            Oferta de lanzamiento
+                            Oferta de lanzamiento (Temporal)
                         </span>
                     </div>
                 </motion.div>
@@ -165,6 +165,11 @@ const Services = () => {
                     ))}
                     </div>
                 </div>
+
+                {/* Nota de precios */}
+                <p className="text-xs text-slate-400 font-medium mt-4 mb-10 md:mb-14">
+                    * Los precios son de lanzamiento y se actualizarán periódicamente.
+                </p>
 
                 {/* Subsección 2: Post-venta */}
                 <div>
