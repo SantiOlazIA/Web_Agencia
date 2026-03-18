@@ -18,6 +18,21 @@ export default function AdminDashboard() {
     const [registros, setRegistros] = useState<Registro[]>([])
     const [loading, setLoading] = useState(true)
 
+    // Noindex: el dashboard de admin no debe aparecer en resultados de búsqueda
+    useEffect(() => {
+        const prevTitle = document.title
+        document.title = 'Admin — Aurea'
+        const noindex = document.createElement('meta')
+        noindex.name = 'robots'
+        noindex.content = 'noindex,nofollow'
+        noindex.id = 'admin-noindex'
+        document.head.appendChild(noindex)
+        return () => {
+            document.title = prevTitle
+            document.getElementById('admin-noindex')?.remove()
+        }
+    }, [])
+
     useEffect(() => {
         getToken()
             .then(token => fetchRegistros(token ?? undefined))

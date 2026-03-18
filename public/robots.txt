@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+
+# AI bots — permitidos para AI SEO (CitationBot, LLM crawlers)
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+Sitemap: https://aureadigital.online/sitemap.xml

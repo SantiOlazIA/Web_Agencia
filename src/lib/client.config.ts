@@ -8,7 +8,7 @@ export const CLIENT = {
     tagline: "Diseño y Desarrollo Web.",
     heroTagline: "Diseño Premium · Presencia Digital",
 
-    whatsappPhone: "5492646274616",
+    whatsappPhone: "5492645472091",
     email: "hola@aureadiseno.com",
 
     navLinks: [
@@ -103,8 +103,32 @@ export const CLIENT = {
     ],
 
     // SEO
-    pageTitle: "Aurea — Diseno y Desarrollo Web",
-    metaDescription: "Agencia de diseno y desarrollo web para negocios argentinos. Tu sitio online en 5 dias, optimizado para convertir visitas en clientes.",
+    pageTitle: "Aurea — Diseño Web en San Juan, Argentina",
+    metaDescription: "Agencia de diseño y desarrollo web en San Juan. Tu sitio online en 5 días, optimizado para convertir visitas en clientes. Pedí tu presupuesto.",
+
+    // SEO extendido — actualizar siteUrl cuando se registre dominio propio
+    seo: {
+        siteUrl: "https://aureadigital.online",
+        city: "San Juan",
+        region: "San Juan, Argentina",
+        serviceArea: ["San Juan", "Mendoza", "Córdoba", "Argentina"],
+        keywords: [
+            "diseño web san juan",
+            "páginas web san juan argentina",
+            "desarrollo web profesional san juan",
+            "agencia web san juan",
+            "presupuesto página web san juan",
+            "crear página web para negocio san juan",
+            "diseño web para pymes argentina",
+            "página web barata san juan",
+            "sitio web rápido argentina",
+            "diseño web con whatsapp san juan",
+        ],
+        ogImage: "/images/og-cover.jpg",
+        twitterHandle: "",
+        latitude: -31.5375,
+        longitude: -68.5364,
+    },
 
     currency: "USD",
 } as const;

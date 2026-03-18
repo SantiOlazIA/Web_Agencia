@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import SeoHead from './components/SeoHead';
 import GoldNavbar from './components/GoldNavbar';
 import Hero from './components/Hero';
 import Cases from './components/Cases';
@@ -7,8 +8,9 @@ import Security from './components/Security';
 import Services from './components/Services';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import { CLIENT } from './lib/client.config';
 
-const waFabUrl = `https://wa.me/5492646274616?text=${encodeURIComponent('Hola! Quiero consultar sobre una página web.')}`;
+const waFabUrl = `https://wa.me/${CLIENT.whatsappPhone}?text=${encodeURIComponent('Hola! Quiero consultar sobre una página web.')}`;
 
 const WhatsAppFAB = () => (
   <motion.a
@@ -31,6 +33,7 @@ const WhatsAppFAB = () => (
 function App() {
   return (
     <div className="relative w-full">
+      <SeoHead />
       {/* Film grain overlay — fixed, pointer-events-none, GPU-friendly */}
       <div className="film-grain" />
 
