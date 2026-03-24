@@ -104,7 +104,7 @@ export const CLIENT = {
 
     // SEO
     pageTitle: "Aurea — Diseño Web en San Juan, Argentina",
-    metaDescription: "Agencia de diseño y desarrollo web en San Juan. Tu sitio online en 5 días, optimizado para convertir visitas en clientes. Pedí tu presupuesto.",
+    metaDescription: "Agencia de diseño y desarrollo web en San Juan. Mayor calidad por menor costo, sitios optimizados para convertir visitas en clientes. Pedí tu presupuesto.",
 
     // SEO extendido — actualizar siteUrl cuando se registre dominio propio
     seo: {
