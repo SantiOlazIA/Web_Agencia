@@ -81,23 +81,33 @@ const Hero = () => {
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-6 md:gap-8 justify-center items-center w-full px-6">
-                        <motion.a
-                            href="#services"
-                            animate={{
-                                boxShadow: [
-                                    '0 4px 20px rgba(234,179,8,0.45)',
-                                    '0 4px 38px rgba(251,146,60,0.65)',
-                                    '0 4px 28px rgba(239,68,68,0.5)',
-                                    '0 4px 38px rgba(251,146,60,0.65)',
-                                    '0 4px 20px rgba(234,179,8,0.45)',
-                                ]
-                            }}
-                            transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-                            className="gold-cta flex items-center justify-center gap-2 text-secondary px-8 py-5 font-bold tracking-wider uppercase text-xs sm:text-sm rounded-2xl hover:scale-105 active:scale-95 transition-transform duration-150 w-full sm:w-auto"
-                        >
-                            <Flame size={20} className="text-orange-500 drop-shadow-[0_0_4px_rgba(251,146,60,0.8)]" />
-                            Conseguí tu página por sólo $250.000
-                        </motion.a>
+                        <div className="relative w-full sm:w-auto mt-4 sm:mt-0">
+                            {/* Aggressive Launch Offer Badge */}
+                            <motion.div
+                                animate={{ y: [-3, 3, -3], rotate: [-2, 2, -2], scale: [1, 1.05, 1] }}
+                                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                                className="absolute -top-4 left-0 sm:-left-4 md:-left-6 bg-red-600 text-white text-[9px] sm:text-[10px] font-black tracking-widest uppercase px-3 py-1.5 rounded-full shadow-[0_0_15px_rgba(220,38,38,0.5)] border-2 border-slate-50 z-20 origin-left"
+                            >
+                                🔥 SUPER OFERTA LANZAMIENTO
+                            </motion.div>
+                            <motion.a
+                                href="#services"
+                                animate={{
+                                    boxShadow: [
+                                        '0 4px 20px rgba(234,179,8,0.45)',
+                                        '0 4px 38px rgba(251,146,60,0.65)',
+                                        '0 4px 28px rgba(239,68,68,0.5)',
+                                        '0 4px 38px rgba(251,146,60,0.65)',
+                                        '0 4px 20px rgba(234,179,8,0.45)',
+                                    ]
+                                }}
+                                transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+                                className="gold-cta relative z-10 flex items-center justify-center gap-2 text-secondary px-8 py-5 font-black tracking-wider uppercase text-xs sm:text-[13px] rounded-2xl hover:scale-105 active:scale-95 transition-transform duration-150 w-full sm:w-auto"
+                            >
+                                <Flame size={20} className="text-orange-500 drop-shadow-[0_0_4px_rgba(251,146,60,0.8)]" />
+                                Conseguí tu web desde $150.000 ó 3 cuotas sin interés
+                            </motion.a>
+                        </div>
                         <a href="#cases" className="border border-slate-300 flex items-center justify-center gap-2 bg-white/50 text-slate-800 px-8 py-5 font-bold tracking-wider uppercase text-xs sm:text-sm rounded-2xl hover:bg-slate-100 hover:scale-[1.02] active:scale-95 transition-all duration-150 w-full sm:w-auto">
                             <Eye size={20} />
                             ¿Cómo podría verse mi página web?

@@ -6,14 +6,14 @@
 export const CLIENT = {
     brandName: "Aurea",
     tagline: "Diseño y Desarrollo Web.",
-    heroTagline: "Diseño Premium · Presencia Digital",
+    heroTagline: "Diseño Web · Presencia Digital",
 
     whatsappPhone: "5492645472091",
     email: "hola@aureadiseno.com",
 
     navLinks: [
         { href: "#cases", label: "Casos" },
-        { href: "#services", label: "Servicios" },
+        { href: "#services", label: "Resoluciones" },
         { href: "#contact", label: "Contacto" },
     ],
 
@@ -21,82 +21,133 @@ export const CLIENT = {
     cases: [
         {
             id: "el-gourmet",
-            name: "Alimentos",
-            category: "Cálido y Acogedor",
-            desc: "",
-            image: "/images/cases/el-gourmet.jpg",
-            url: "#",
+            name: "Gastronomía",
+            category: "Gastronomía",
+            desc: "Página web con reservas y carta digital.",
+            image: "/images/cases/desktop-el-gourmet.jpg",
+            image_mobile: "/images/cases/mobile-el-gourmet.jpg",
+            url: "https://elgourmetpanaderia.vercel.app/",
         },
         {
             id: "pro-contractor",
-            name: "Industria y Minería",
-            category: "Brutalista",
-            desc: "",
-            image: "/images/cases/pro-contractor.jpg",
-            url: "#",
+            name: "Industrial/Minería",
+            category: "Industrial/Minería",
+            desc: "Presencia digital robusta para captar inversores y mostrar obras.",
+            image: "/images/cases/desktop-pro-contractor.jpg",
+            image_mobile: "/images/cases/mobile-pro-contractor.jpg",
+            url: "https://demo-pro-contractor.vercel.app/",
         },
         {
             id: "service-clinic",
-            name: "Servicios Profesionales Y Tech",
-            category: "Minimalista de Alto Impacto",
-            desc: "",
-            image: "/images/cases/service-clinic.jpg",
-            url: "#",
+            name: "Servicios Médicos",
+            category: "Servicios Médicos",
+            desc: "Sistema de turnos automatizado con dashboard para los doctores.",
+            image: "/images/cases/desktop-service-clinic.jpg", // Reusing for demo
+            image_mobile: "/images/cases/mobile-service-clinic.jpg",
+            url: "https://demo-service-clinic.vercel.app/",
         },
+        {
+            id: "real-estate",
+            name: "Construcción",
+            category: "Construcción",
+            desc: "Catálogo de proyectos con filtros avanzados y galería inmersiva.",
+            image: "/images/cases/desktop-pro-contractor.jpg", // Placeholder
+            image_mobile: "/images/cases/mobile-pro-contractor.jpg", // Placeholder
+            url: "https://aureadigital.online",
+        },
+        {
+            id: "law-firm",
+            name: "Servicios Profesionales",
+            category: "Servicios Profesionales",
+            desc: "Presencia online y captación de clientes para servicios profesionales.",
+            image: "/images/cases/desktop-service-clinic.jpg", // Placeholder
+            image_mobile: "/images/cases/mobile-service-clinic.jpg", // Placeholder
+            url: "https://aureadigital.online",
+        }
     ],
 
     // Pricing tiers — features as BUSINESS BENEFITS
     services: [
         {
             id: "base",
-            name: "Página web básica",
-            price: "2 cuotas de $125.000",
-            delivery: "",
-            desc: "",
+            name: "Presencia Digital",
+            price: "Desde $150.000",
+            category: "Básica",
+            desc: "Ideal para Estudios Contables, Jurídicos, Proveedores Mineros y Tech. Una carta de presentación impecable.",
             features: [
-                "Secciones Institucionales (Presentación + Contacto)",
-                "Alta velocidad de carga",
-                "Gráficos de calidad y animaciones sencillas",
-                "Integración con WhatsApp, Google Maps e Instagram"
+                "Diseño a Medida",
+                "WhatsApp",
+                "Instagram",
+                "Google Maps",
+                "SEO y Velocidad"
             ],
             highlight: false,
         },
         {
-            id: "pro",
-            name: "Página web completa",
-            price: "2 cuotas de $250.000",
-            delivery: "",
-            desc: "",
+            id: "gastronomia",
+            name: "Restaurantes y Bares",
+            price: "Desde $300.000",
+            category: "Sectores",
+            desc: "Tu propio sistema de reservas sin comisiones de terceros.",
             features: [
-                "Catálogo de productos",
-                "Cambiá productos e imágenes",
-                "Actualizá los precios cuando quieras",
+                "Reservas Integradas",
+                "Carta Digital",
+                "Gestión de Mesas",
+                "Diseño Gastronómico"
+            ],
+            highlight: true,
+        },
+        {
+            id: "real-estate",
+            name: "Inmobiliarias y Motores",
+            price: "Desde $400.000",
+            category: "Sectores",
+            desc: "Catálogos avanzados que cierran ventas por sí solos.",
+            features: [
+                "Catálogo Propiedades",
+                "Galerías HD",
+                "Formularios",
+                "Integración CRM"
+            ],
+            highlight: true,
+        },
+        {
+            id: "medicina",
+            name: "Clínicas y Salud",
+            price: "Desde $600.000",
+            category: "Sectores",
+            desc: "Automatizá tu clínica. Menos llamadas, más pacientes atendidos.",
+            features: [
+                "Sistema de Turnos",
+                "Panel Médico",
+                "Alertas Automáticas",
+                "Fichas Médicas"
             ],
             highlight: true,
         },
         {
             id: "retainer",
             name: "Mantenimiento",
-            price: "Gratis 3 meses, luego $10.000/mes",
-            delivery: "",
+            price: "Gratis 3 meses, luego $15.000/mes",
+            category: "Post-venta",
             desc: "",
             features: [
-                "Dominio incluido",
-                "Hosting incluido",
-                "Seguridad básica incluida",
+                "Hosting y Dominio",
+                "Seguridad y Backups",
+                "Soporte Técnico"
             ],
             highlight: false,
         },
         {
             id: "analytics",
-            name: "Analíticas y Post-venta",
-            price: "$10.000/mes (3 meses), luego $30.000/mes",
-            delivery: "",
+            name: "Analíticas y Crecimiento",
+            price: "$30.000/mes",
+            category: "Post-venta",
             desc: "",
             features: [
-                "Todo lo incluido en Mantenimiento",
-                "Reporte mensual de visitas",
-                "Análisis de páginas y conversiones",
+                "Plan Mantenimiento",
+                "Reportes de Visitas",
+                "Análisis de Conversión",
             ],
             highlight: false,
         },
@@ -130,7 +181,7 @@ export const CLIENT = {
         longitude: -68.5364,
     },
 
-    currency: "USD",
+    currency: "ARS",
 } as const;
 
 export type Case = (typeof CLIENT.cases)[number];
