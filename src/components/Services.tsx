@@ -1,6 +1,6 @@
 import { useState, type ReactElement } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, Wrench, ChevronDown, Stethoscope, Utensils, Building2, Briefcase, Zap, Calendar, LayoutGrid, ShieldCheck, PieChart, Monitor, NotebookPen } from 'lucide-react';
+import { Check, Wrench, ChevronDown, Stethoscope, Utensils, Building2, Briefcase, Zap, Calendar, LayoutGrid, ShieldCheck, PieChart, Monitor, NotebookPen, Instagram, MapPin, Sparkles } from 'lucide-react';
 import { CLIENT, type Service } from '../lib/client.config';
 
 // Services / Pricing — gold hover glows, gradient CTA buttons
@@ -25,11 +25,13 @@ const FeatureIcon = ({ feature, className }: { feature: string, className?: stri
     const defaultColor = className || "text-accent";
     const str = feature.toLowerCase();
 
-    if (str.includes('whatsapp') || str.includes('instagram') || str.includes('maps')) {
-        return <WhatsAppIcon />;
-    }
+    if (str.includes('whatsapp')) return <WhatsAppIcon />;
+    if (str.includes('instagram')) return <Instagram size={16} strokeWidth={2.5} className={`flex-shrink-0 mt-0.5 text-pink-500`} />;
+    if (str.includes('google maps') || str.includes('maps')) return <MapPin size={16} strokeWidth={2.5} className={`flex-shrink-0 mt-0.5 text-orange-500`} />;
 
+    if (str.includes('optimización ia') || str.includes('ia')) return <Sparkles size={16} strokeWidth={2.5} className={`flex-shrink-0 mt-0.5 text-blue-400`} />;
     if (str.includes('seo') || str.includes('velocidad')) return <Zap size={16} strokeWidth={2.5} className={`flex-shrink-0 mt-0.5 ${defaultColor}`} />;
+
     if (str.includes('calendario') || str.includes('turnos') || str.includes('reservas')) return <Calendar size={16} strokeWidth={2.5} className={`flex-shrink-0 mt-0.5 ${defaultColor}`} />;
     if (str.includes('catálogo') || str.includes('galería') || str.includes('diseño')) return <LayoutGrid size={16} strokeWidth={2.5} className={`flex-shrink-0 mt-0.5 ${defaultColor}`} />;
     if (str.includes('seguridad') || str.includes('hosting') || str.includes('dominio')) return <ShieldCheck size={16} strokeWidth={2.5} className={`flex-shrink-0 mt-0.5 ${defaultColor}`} />;
@@ -39,6 +41,33 @@ const FeatureIcon = ({ feature, className }: { feature: string, className?: stri
 
     return <Check size={16} strokeWidth={2.5} className={`flex-shrink-0 mt-0.5 ${defaultColor}`} />;
 };
+
+const FeatureText = ({ text, isSectors }: { text: string, isSectors: boolean }) => {
+    // Basic markdown-like parser for *text*
+    const parts = text.split(/(\*.*?\*)/g);
+
+    return (
+        <span className={`text-sm font-light ${isSectors ? 'text-slate-300' : 'text-slate-600'}`}>
+            {parts.map((part, i) => {
+                if (part.startsWith('*') && part.endsWith('*')) {
+                    const clean = part.slice(1, -1);
+                    return (
+                        <span key={i} className="font-black italic bg-gradient-to-r from-accent to-orange-400 bg-clip-text text-transparent">
+                            {clean}
+                        </span>
+                    );
+                }
+                if (part === "Todo lo de presencia digital +") {
+                    return <span key={i} className="font-bold text-accent">{part}</span>;
+                }
+                return cleanText(part);
+            })}
+        </span>
+    );
+};
+
+// Helper to remove any leftover symbols
+const cleanText = (t: string) => t;
 
 const PlanCard = ({ plan, index }: { plan: Service, index: number }) => {
     const [expanded, setExpanded] = useState(false);
@@ -133,9 +162,7 @@ const PlanCard = ({ plan, index }: { plan: Service, index: number }) => {
                                         className="flex items-start gap-3"
                                     >
                                         <FeatureIcon feature={f} className={isSectors ? 'text-accent' : 'text-accent'} />
-                                        <span className={`text-sm font-light ${isSectors ? 'text-slate-300' : 'text-slate-600'}`}>
-                                            {f}
-                                        </span>
+                                        <FeatureText text={f} isSectors={isSectors} />
                                     </motion.li>
                                 ))}
                             </ul>
@@ -262,12 +289,12 @@ const Services = () => {
                                         {plan.name}
                                     </div>
                                     <div className="text-lg md:text-xl font-bold tracking-tight mt-2 leading-snug">
-                                        {plan.id === 'retainer' && (
-                                            <><span className="text-emerald-500">Gratis 3 meses</span>, luego $15.000/mes</>
-                                        )}
-                                        {plan.id === 'analytics' && (
-                                            <>$30.000/mes</>
-                                        )}
+                                        {plan.price.includes('Gratis') ? (
+                                            <>
+                                                <span className="text-emerald-500">Gratis 3 meses</span>
+                                                {plan.price.split('Gratis 3 meses')[1]}
+                                            </>
+                                        ) : plan.price}
                                     </div>
                                 </div>
 
@@ -275,7 +302,7 @@ const Services = () => {
                                     {plan.features.map((f) => (
                                         <li key={f} className="flex items-start gap-3">
                                             <FeatureIcon feature={f} className={plan.id === 'retainer' ? 'text-emerald-500' : 'text-accent'} />
-                                            <span className={`text-sm font-light ${plan.id === 'analytics' ? 'text-slate-300' : 'text-slate-600'}`}>{f}</span>
+                                            <FeatureText text={f} isSectors={plan.id === 'analytics'} />
                                         </li>
                                     ))}
                                 </ul>

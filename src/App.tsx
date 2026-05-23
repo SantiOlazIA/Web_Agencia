@@ -6,6 +6,7 @@ import Cases from './components/Cases';
 import Process from './components/Process';
 import Security from './components/Security';
 import Services from './components/Services';
+import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { CLIENT } from './lib/client.config';
@@ -44,6 +45,7 @@ function App() {
         <Process />
         <Services />
         <Security />
+        <FAQ />
         <Contact />
       </main>
       <Footer />

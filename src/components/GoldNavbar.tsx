@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Home, Eye, Banknote, MessageCircle, Menu, X, CircleHelp, ShieldCheck, Lock } from 'lucide-react';
+import { Home, Eye, Banknote, MessageCircle, Menu, X, ShieldCheck, Lock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 /*
@@ -16,10 +16,9 @@ import { Link } from 'react-router-dom';
 
 const NAV_ITEMS = [
     { id: 'hero', label: 'Inicio', icon: Home, href: '#hero' },
-    { id: 'cases', label: 'Ejemplos', icon: Eye, href: '#cases' },
-    { id: 'process', label: 'Nosotros', icon: CircleHelp, href: '#process' },
+    { id: 'cases', label: 'Casos', icon: Eye, href: '#cases' },
+    { id: 'services', label: 'Resoluciones', icon: Banknote, href: '#services' },
     { id: 'seguridad', label: 'Seguridad', icon: ShieldCheck, href: '#seguridad' },
-    { id: 'services', label: 'Precios', icon: Banknote, href: '#services' },
     { id: 'contact', label: 'Contacto', icon: MessageCircle, href: '#contact' },
 ];
 

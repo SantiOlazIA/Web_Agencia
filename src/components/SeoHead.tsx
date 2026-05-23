@@ -120,15 +120,26 @@ export default function SeoHead() {
                     },
                     hasOfferCatalog: {
                         '@type': 'OfferCatalog',
-                        name: 'Servicios de Diseño Web',
+                        name: 'Soluciones Digitales Aurea',
                         itemListElement: [
-                            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Diseño Web' } },
-                            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Desarrollo Web' } },
-                            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Mantenimiento Web' } },
+                            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Presencia Digital Básica', description: 'Diseño a medida con WhatsApp e Instagram.' } },
+                            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Desarrollo para Gastronomía', description: 'Cartas digitales autogestionables y reservas.' } },
+                            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Portales Inmobiliarios', description: 'Catálogos de propiedades autogestionables.' } },
+                            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Sistemas para Clínicas', description: 'Gestión de turnos e integración con Google Calendar.' } },
+                            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Optimización IA', description: 'Integración tecnológica para máxima conversión.' } },
                         ],
                     },
                     parentOrganization: { '@id': `${seo.siteUrl}/#organization` },
                 },
+                {
+                    '@type': 'WebSite',
+                    '@id': `${seo.siteUrl}/#website`,
+                    url: seo.siteUrl,
+                    name: brandName,
+                    description: metaDescription,
+                    publisher: { '@id': `${seo.siteUrl}/#organization` },
+                    inLanguage: 'es-AR',
+                }
             ],
         });
 
